@@ -2,6 +2,7 @@
     <h3><?= __('Actions') ?></h3>
     <ul class="side-nav">
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
+		<li><?= $this->Html->link(__('Logout'), ['action' => 'logout']) ?></li>
     </ul>
 </div>
 <div class="users index large-10 medium-9 columns">
@@ -10,7 +11,7 @@
         <tr>
             <th><?= $this->Paginator->sort('id') ?></th>
             <th><?= $this->Paginator->sort('username') ?></th>
-            <th><?= $this->Paginator->sort('password') ?></th>
+            
             <th><?= $this->Paginator->sort('firstname') ?></th>
             <th><?= $this->Paginator->sort('lastname') ?></th>
             <th><?= $this->Paginator->sort('role') ?></th>
@@ -22,7 +23,7 @@
         <tr>
             <td><?= $this->Number->format($user->id) ?></td>
             <td><?= h($user->username) ?></td>
-            <td><?= h($user->password) ?></td>
+           
             <td><?= h($user->firstname) ?></td>
             <td><?= h($user->lastname) ?></td>
             <td><?= h($user->role) ?></td>
