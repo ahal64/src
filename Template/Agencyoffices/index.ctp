@@ -24,9 +24,9 @@
             <td><?= $this->Number->format($agencyoffice->agencyofficeid) ?></td>
             <td><?= h($agencyoffice->agencyname) ?></td>
             <td><?= h($agencyoffice->customercode) ?></td>
-            <td><?= $this->Number->format($agencyoffice->abn) ?></td>
-            <td><?= $this->Number->format($agencyoffice->phone) ?></td>
-            <td><?= $this->Number->format($agencyoffice->fax) ?></td>
+            <td><?= h($agencyoffice->abn) ?></td>
+            <td><?= h($agencyoffice->phone) ?></td>
+            <td><?= h($agencyoffice->fax) ?></td>
             <td><?= h($agencyoffice->email) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $agencyoffice->agencyofficeid]) ?>

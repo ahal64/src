@@ -21,7 +21,7 @@
             <td><?= $this->Number->format($agencystaff->agencystaffid) ?></td>
             <td><?= h($agencystaff->firstname) ?></td>
             <td><?= h($agencystaff->lastname) ?></td>
-            <td><?= $this->Number->format($agencystaff->mobile) ?></td>
+            <td><?= h($agencystaff->mobile) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $agencystaff->agencystaffid]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $agencystaff->agencystaffid]) ?>

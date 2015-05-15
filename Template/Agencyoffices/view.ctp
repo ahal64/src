@@ -15,6 +15,12 @@
             <p><?= h($agencyoffice->agencyname) ?></p>
             <h6 class="subheader"><?= __('Customercode') ?></h6>
             <p><?= h($agencyoffice->customercode) ?></p>
+            <h6 class="subheader"><?= __('Abn') ?></h6>
+            <p><?= h($agencyoffice->abn) ?></p>
+            <h6 class="subheader"><?= __('Phone') ?></h6>
+            <p><?= h($agencyoffice->phone) ?></p>
+            <h6 class="subheader"><?= __('Fax') ?></h6>
+            <p><?= h($agencyoffice->fax) ?></p>
             <h6 class="subheader"><?= __('Email') ?></h6>
             <p><?= h($agencyoffice->email) ?></p>
             <h6 class="subheader"><?= __('Website') ?></h6>
@@ -25,18 +31,12 @@
             <p><?= h($agencyoffice->address2) ?></p>
             <h6 class="subheader"><?= __('Suburb') ?></h6>
             <p><?= h($agencyoffice->suburb) ?></p>
+            <h6 class="subheader"><?= __('Postcode') ?></h6>
+            <p><?= h($agencyoffice->postcode) ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Agencyofficeid') ?></h6>
             <p><?= $this->Number->format($agencyoffice->agencyofficeid) ?></p>
-            <h6 class="subheader"><?= __('Abn') ?></h6>
-            <p><?= $this->Number->format($agencyoffice->abn) ?></p>
-            <h6 class="subheader"><?= __('Phone') ?></h6>
-            <p><?= $this->Number->format($agencyoffice->phone) ?></p>
-            <h6 class="subheader"><?= __('Fax') ?></h6>
-            <p><?= $this->Number->format($agencyoffice->fax) ?></p>
-            <h6 class="subheader"><?= __('Postcode') ?></h6>
-            <p><?= $this->Number->format($agencyoffice->postcode) ?></p>
             <h6 class="subheader"><?= __('Agencygroupid') ?></h6>
             <p><?= $this->Number->format($agencyoffice->agencygroupid) ?></p>
             <h6 class="subheader"><?= __('Landlordid') ?></h6>

@@ -41,7 +41,6 @@ class AgencystaffsTable extends Table
             ->notEmpty('firstname')
             ->requirePresence('lastname', 'create')
             ->notEmpty('lastname')
-            ->add('mobile', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('mobile');
 
         return $validator;

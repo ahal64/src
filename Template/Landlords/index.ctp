@@ -26,8 +26,8 @@
             <td><?= h($landlord->lastname) ?></td>
             <td><?= h($landlord->address1) ?></td>
             <td><?= h($landlord->address2) ?></td>
-            <td><?= $this->Number->format($landlord->mobile) ?></td>
-            <td><?= $this->Number->format($landlord->homephone) ?></td>
+            <td><?= h($landlord->mobile) ?></td>
+            <td><?= h($landlord->homephone) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $landlord->landlordid]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $landlord->landlordid]) ?>

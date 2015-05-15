@@ -15,12 +15,12 @@
             <p><?= h($agencystaff->firstname) ?></p>
             <h6 class="subheader"><?= __('Lastname') ?></h6>
             <p><?= h($agencystaff->lastname) ?></p>
+            <h6 class="subheader"><?= __('Mobile') ?></h6>
+            <p><?= h($agencystaff->mobile) ?></p>
         </div>
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Agencystaffid') ?></h6>
             <p><?= $this->Number->format($agencystaff->agencystaffid) ?></p>
-            <h6 class="subheader"><?= __('Mobile') ?></h6>
-            <p><?= $this->Number->format($agencystaff->mobile) ?></p>
         </div>
     </div>
 </div>
