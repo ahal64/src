@@ -109,7 +109,7 @@ class UsersController extends AppController
         $user = $this->Auth->identify();
         if ($user) {
             $this->Auth->setUser($user);
-            return $this->redirect($this->Auth->redirectUrl('/users/index'));
+            return $this->redirect($this->Auth->redirectUrl('/users/home'));
         }
         $this->Flash->error('Your username or password is incorrect.');
     }
@@ -126,4 +126,8 @@ class UsersController extends AppController
     $this->Auth->allow(['add']);
    }
    
+   public function home()
+   {
+	   
+   }
 }
