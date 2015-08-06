@@ -26,6 +26,7 @@ use Cake\Controller\Controller;
  */
 class AppController extends Controller
 {
+
     /**
      * Initialization hook method.
      *
@@ -33,38 +34,8 @@ class AppController extends Controller
      *
      * @return void
      */
-   public function initialize()
-{
-    $this->loadComponent('Flash');
-    $this->loadComponent('Auth', [
-        'authorize'=> 'Controller',//added this line
-        'authenticate' => [
-            'Form' => [
-                'fields' => [
-                    'username' => 'username',
-                    'password' => 'password'
-                ]
-            ]
-        ],
-        'loginAction' => [
-            'controller' => 'Users',
-            'action' => 'login'
-        ],
-        'unauthorizedRedirect' => $this->referer()
-    ]);
-
-    // Allow the display action so our pages controller
-    // continues to work.
-    $this->Auth->allow(['display']);
-}
-	
-	public function isAuthorized($user)
-   {
-      if (isset($user['role']) && ($user['role'] == 'admin' || $user['role'] == 'ADMIN')) 
-	  {
-        return true;
-      }
-   
-    return false;
-   }
+    public function initialize()
+    {
+        $this->loadComponent('Flash');
+    }
 }

@@ -19,7 +19,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <html>
 <head>
     <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
@@ -28,6 +31,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<?= $this->Html->css('bootstrap.min.css') ?>
+	<?= $this->Html->css('bootstrap-theme.min.css') ?>
+	<?= $this->Html->script('bootstrap.min.js') ?>
+	 
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>

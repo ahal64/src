@@ -45,6 +45,8 @@ class AgencyofficesController extends AppController
      */
     public function add()
     {
+		$this->loadModel('Agencystaffs');
+		
         $agencyoffice = $this->Agencyoffices->newEntity();
         if ($this->request->is('post')) {
             $agencyoffice = $this->Agencyoffices->patchEntity($agencyoffice, $this->request->data);
