@@ -31,10 +31,15 @@ class AgencygroupsController extends AppController
      */
     public function view($id = null)
     {
-        $agencygroup = $this->Agencygroups->get($id, [
-            'contain' => []
-        ]);
+		$agencygroup = $this->Agencygroups->get($id);
+
+//all the offices for respective group		
+		$agencyoffices = $this->Agencygroups->get($id, [
+						'contain' => ['Agencyoffices']
+					]);
+
         $this->set('agencygroup', $agencygroup);
+        $this->set('agencyoffices', $agencyoffices->toArray());		
         $this->set('_serialize', ['agencygroup']);
     }
 

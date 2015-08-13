@@ -24,6 +24,9 @@ class AgencygroupsTable extends Table
         $this->table('agencygroups');
         $this->displayField('agencygroupid');
         $this->primaryKey('agencygroupid');
+		
+		//hierarchical table relationship
+        $this->hasMany('agencyoffices', ['className' => 'agencyoffices', 'foreignKey' => 'agencygroupid']);		
     }
 
     /**

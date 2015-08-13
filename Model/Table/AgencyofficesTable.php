@@ -24,6 +24,8 @@ class AgencyofficesTable extends Table
         $this->table('agencyoffices');
         $this->displayField('agencyofficeid');
         $this->primaryKey('agencyofficeid');
+		
+        $this->hasOne('agencygroup', ['className' => 'agencygroup', 'foreignKey' => 'agencygroupid']);	
     }
 
     /**
