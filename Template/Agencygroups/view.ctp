@@ -27,7 +27,6 @@
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('agencyname') ?></th>
-			
 			<!-- other office attribute headings -->
 			<th><?= $this->Paginator->sort('customercode') ?></th>
             <th><?= $this->Paginator->sort('abn') ?></th>
@@ -38,6 +37,8 @@
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
     </thead>
+	<div class="addagencyofficesbutton">   <?=$this->Form->button('Add Agency Office')?></div>
+	
     <tbody>	
     <?php 
 	foreach ($agencyoffices['agencyoffices'] as $agencyoffice): ?>
@@ -59,14 +60,14 @@
 	<?php endforeach; ?>
     </tbody>
     </table>
-<!--<div class="paginator">
+<!-- <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->prev('< ' . __('previous')) ?>
             <?= $this->Paginator->numbers() ?>
             <?= $this->Paginator->next(__('next') . ' >') ?>
         </ul>
         <p><?= $this->Paginator->counter() ?></p>
-    </div>-->
+    </div> -->
 </div>
 
 

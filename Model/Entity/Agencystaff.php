@@ -18,5 +18,6 @@ class Agencystaff extends Entity
         'firstname' => true,
         'lastname' => true,
         'mobile' => true,
+		'agencyofficeid' => true,
     ];
 }

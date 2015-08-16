@@ -24,6 +24,8 @@ class AgencystaffsTable extends Table
         $this->table('agencystaffs');
         $this->displayField('agencystaffid');
         $this->primaryKey('agencystaffid');
+		
+		$this->hasOne('agencyoffices', ['className' => 'agencyoffices', 'foreignKey' => 'agencystaffid']);
     }
 
     /**
@@ -41,7 +43,9 @@ class AgencystaffsTable extends Table
             ->notEmpty('firstname')
             ->requirePresence('lastname', 'create')
             ->notEmpty('lastname')
-            ->allowEmpty('mobile');
+            ->allowEmpty('mobile')
+			->add('agencyofficeid', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('agencyofficeid');
 
         return $validator;
     }

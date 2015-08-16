@@ -26,14 +26,14 @@
         ?>
     </fieldset>
 	
-    <fieldset>
+    <!--<fieldset>
         <legend><?= __('Add Agencystaff') ?></legend>
         <?php
             echo $this->Form->input('Agencystaff.firstname');
             echo $this->Form->input('Agencystaff.lastname');
             echo $this->Form->input('Agencystaff.mobile');
         ?>
-    </fieldset>
+    </fieldset>-->
 	
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>

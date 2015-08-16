@@ -46,3 +46,36 @@
         </div>
     </div>
 </div>
+
+<!-- show all agencystaff for the selected agency office -->
+<div class="agencystaffs index large-10 medium-9 columns">
+    <table cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th><?= $this->Paginator->sort('agencystaffid') ?></th>
+            <th><?= $this->Paginator->sort('firstname') ?></th>
+            <th><?= $this->Paginator->sort('lastname') ?></th>
+            <th><?= $this->Paginator->sort('mobile') ?></th>
+            <th class="actions"><?= __('Actions') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php 
+	foreach ($agencystaffs['agencystaffs'] as $agencystaff): ?>
+		<tr>
+		    <td><?=$agencystaff['agencystaffid']?></td>
+			<td><?=$agencystaff['firstname']?></td>			
+			<td><?=$agencystaff['lastname']?></td>
+            <td><?=$agencystaff['mobile']?></td>
+           
+			<!--end of other office attributes-->
+            <td class="actions">
+                <?= $this->Html->link(__('View'), ['controller' => 'agencystaffs', 'action' => 'view', $agencystaff['agencystaffid']]) ?>
+                <?= $this->Html->link(__('Edit'), ['controller' => 'agencystaffs', 'action' => 'edit', $agencystaff['agencystaffid']]) ?>
+                <?= $this->Form->postLink(__('Delete'), ['controller' => 'agencystaffs', 'action' => 'delete', $agencystaff['agencystaffid']], ['confirm' => __('Are you sure you want to delete # {0}?', $agencyoffice['agencyofficeid'])]) ?>
+            </td>
+		</tr>	
+	<?php endforeach; ?>
+	    </tbody>
+    </table>
+</div>

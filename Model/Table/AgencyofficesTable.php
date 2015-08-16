@@ -25,6 +25,8 @@ class AgencyofficesTable extends Table
         $this->displayField('agencyofficeid');
         $this->primaryKey('agencyofficeid');
 		
+		//hierarchical table relationship
+        $this->hasMany('agencystaffs', ['className' => 'agencystaffs', 'foreignKey' => 'agencystaffid']);	
         $this->hasOne('agencygroup', ['className' => 'agencygroup', 'foreignKey' => 'agencygroupid']);	
     }
 
@@ -57,9 +59,7 @@ class AgencyofficesTable extends Table
             ->add('agencygroupid', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('agencygroupid')
             ->add('landlordid', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('landlordid')
-            ->add('agencystaffid', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('agencystaffid');
+            ->allowEmpty('landlordid');
 
         return $validator;
     }
