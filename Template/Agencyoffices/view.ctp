@@ -41,8 +41,6 @@
             <p><?= $this->Number->format($agencyoffice->agencygroupid) ?></p>
             <h6 class="subheader"><?= __('Landlordid') ?></h6>
             <p><?= $this->Number->format($agencyoffice->landlordid) ?></p>
-            <h6 class="subheader"><?= __('Agencystaffid') ?></h6>
-            <p><?= $this->Number->format($agencyoffice->agencystaffid) ?></p>
         </div>
     </div>
 </div>
@@ -72,7 +70,7 @@
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['controller' => 'agencystaffs', 'action' => 'view', $agencystaff['agencystaffid']]) ?>
                 <?= $this->Html->link(__('Edit'), ['controller' => 'agencystaffs', 'action' => 'edit', $agencystaff['agencystaffid']]) ?>
-                <?= $this->Form->postLink(__('Delete'), ['controller' => 'agencystaffs', 'action' => 'delete', $agencystaff['agencystaffid']], ['confirm' => __('Are you sure you want to delete # {0}?', $agencyoffice['agencyofficeid'])]) ?>
+                <?= $this->Form->postLink(__('Delete'), ['controller' => 'agencystaffs', 'action' => 'delete', $agencystaff['agencystaffid']], ['confirm' => __('Are you sure you want to delete # {0}?', $agencystaff['agencystaffid'])]) ?>
             </td>
 		</tr>	
 	<?php endforeach; ?>

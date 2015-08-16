@@ -22,7 +22,6 @@
             echo $this->Form->input('postcode');
             echo $this->Form->input('agencygroupid');
             echo $this->Form->input('landlordid');
-            echo $this->Form->input('agencystaffid');
         ?>
     </fieldset>
 	
