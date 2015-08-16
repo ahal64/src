@@ -25,7 +25,7 @@ class AgencystaffsTable extends Table
         $this->displayField('agencystaffid');
         $this->primaryKey('agencystaffid');
 		
-		$this->hasOne('agencyoffices', ['className' => 'agencyoffices', 'foreignKey' => 'agencystaffid']);
+		$this->hasOne('agencyoffice', ['className' => 'agencyoffice', 'foreignKey' => 'agencyofficeid']);
     }
 
     /**

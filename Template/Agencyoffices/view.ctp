@@ -45,6 +45,7 @@
     </div>
 </div>
 
+<div>
 <!-- show all agencystaff for the selected agency office -->
 <div class="agencystaffs index large-10 medium-9 columns">
     <table cellpadding="0" cellspacing="0">
@@ -76,4 +77,5 @@
 	<?php endforeach; ?>
 	    </tbody>
     </table>
+   </div>
 </div>
