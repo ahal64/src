@@ -47,9 +47,9 @@ class AgencyofficesController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($groupid = null)
     {
-		$this->loadModel('Agencystaffs');
+		//$this->loadModel('Agencystaffs');
 		
         $agencyoffice = $this->Agencyoffices->newEntity();
         if ($this->request->is('post')) {
@@ -61,7 +61,7 @@ class AgencyofficesController extends AppController
                 $this->Flash->error('The agencyoffice could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('agencyoffice'));
+        $this->set(compact('agencyoffice','groupid'));
         $this->set('_serialize', ['agencyoffice']);
     }
 

@@ -20,6 +20,9 @@
         </div>
     </div>
 </div>
+<?= $this->Html->link(__('Add Agency Office'), ['action' => 'clickAddOfficeButton', $agencygroup->agencygroupid]) ?>
+
+
 
 <div>
 <div class="agencyoffices index large-10 medium-9 columns">
@@ -37,7 +40,6 @@
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
     </thead>
-	<div class="addagencyofficesbutton">   <?=$this->Form->button('Add Agency Office')?></div>
 	
     <tbody>	
     <?php 

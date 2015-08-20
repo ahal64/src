@@ -107,4 +107,14 @@ class AgencygroupsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+	
+	public function clickAddOfficeButton($currentagencygroup=null)
+	{
+		//$currentagencygroup = $this->Agencygroups->get($id);
+		$this->redirect(array(
+		      'controller' => 'agencyoffices',
+		      'action' => 'add',
+			  $currentagencygroup));
+		
+	}
 }

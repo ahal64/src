@@ -45,6 +45,9 @@
     </div>
 </div>
 
+
+<?= $this->Html->link(__('Add Agency Staff Members'), ['action' => 'clickAddStaffButton', $agencyoffice->agencyofficeid]) ?>
+
 <div>
 <!-- show all agencystaff for the selected agency office -->
 <div class="agencystaffs index large-10 medium-9 columns">

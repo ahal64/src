@@ -20,19 +20,21 @@
             echo $this->Form->input('address2');
             echo $this->Form->input('suburb');
             echo $this->Form->input('postcode');
-            echo $this->Form->input('agencygroupid');
+			
+			
+			if($groupid == null)
+			{
+				 echo $this->Form->input('agencygroupid');
+			}
+			else
+			{
+				echo $this->Form->label('agencygroupid: ');
+				echo $groupid;
+			}
             echo $this->Form->input('landlordid');
+			
         ?>
     </fieldset>
-	
-    <!--<fieldset>
-        <legend><?= __('Add Agencystaff') ?></legend>
-        <?php
-            echo $this->Form->input('Agencystaff.firstname');
-            echo $this->Form->input('Agencystaff.lastname');
-            echo $this->Form->input('Agencystaff.mobile');
-        ?>
-    </fieldset>-->
 	
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
