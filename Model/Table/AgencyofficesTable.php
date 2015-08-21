@@ -26,6 +26,7 @@ class AgencyofficesTable extends Table
         $this->primaryKey('agencyofficeid');
 		
 		//hierarchical table relationship
+		$this->hasMany('properties', ['className' => 'properties', 'foreignKey' => 'agencyofficeid']);
         $this->hasMany('agencystaffs', ['className' => 'agencystaffs', 'foreignKey' => 'agencyofficeid']);	
         $this->hasOne('agencygroup', ['className' => 'agencygroup', 'foreignKey' => 'agencygroupid']);	
     }
@@ -50,16 +51,14 @@ class AgencyofficesTable extends Table
             ->allowEmpty('phone')
             ->allowEmpty('fax')
             ->add('email', 'valid', ['rule' => 'email'])
-            ->allowEmpty('email')
+            ->notEmpty('email')
             ->allowEmpty('website')
             ->allowEmpty('address1')
             ->allowEmpty('address2')
             ->allowEmpty('suburb')
             ->allowEmpty('postcode')
             ->add('agencygroupid', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('agencygroupid')
-            ->add('landlordid', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('landlordid');
+            ->allowEmpty('agencygroupid');
 
         return $validator;
     }

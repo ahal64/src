@@ -27,7 +27,6 @@
             echo $this->Form->input('suburb');
             echo $this->Form->input('postcode');
             echo $this->Form->input('agencygroupid');
-            echo $this->Form->input('landlordid');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

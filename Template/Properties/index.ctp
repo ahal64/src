@@ -9,8 +9,7 @@
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('propertiesid') ?></th>
-            <th><?= $this->Paginator->sort('occid') ?></th>
-            <th><?= $this->Paginator->sort('landlordid') ?></th>
+            <th><?= $this->Paginator->sort('agencyofficeid') ?></th>
             <th><?= $this->Paginator->sort('standardid') ?></th>
             <th><?= $this->Paginator->sort('propertymanager') ?></th>
             <th><?= $this->Paginator->sort('keynumber') ?></th>
@@ -22,8 +21,7 @@
     <?php foreach ($properties as $property): ?>
         <tr>
             <td><?= $this->Number->format($property->propertiesid) ?></td>
-            <td><?= $this->Number->format($property->occid) ?></td>
-            <td><?= $this->Number->format($property->landlordid) ?></td>
+            <td><?= $this->Number->format($property->agencyofficeid) ?></td>
             <td><?= $this->Number->format($property->standardid) ?></td>
             <td><?= h($property->propertymanager) ?></td>
             <td><?= h($property->keynumber) ?></td>

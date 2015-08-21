@@ -43,8 +43,13 @@ class PropertiesController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($officeid=null)
     {
+		$agencyoffices = $this->loadModel('Agencyoffices');
+		$officelist = $agencyoffices->find('list')->select(['agencyofficeid','agencyname']);
+		
+		
+		
         $property = $this->Properties->newEntity();
         if ($this->request->is('post')) {
             $property = $this->Properties->patchEntity($property, $this->request->data);
@@ -55,7 +60,7 @@ class PropertiesController extends AppController
                 $this->Flash->error('The property could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('property'));
+        $this->set(compact('property','officeid','officelist'));
         $this->set('_serialize', ['property']);
     }
 

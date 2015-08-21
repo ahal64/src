@@ -24,6 +24,8 @@ class PropertiesTable extends Table
         $this->table('properties');
         $this->displayField('propertiesid');
         $this->primaryKey('propertiesid');
+		
+		$this->hasOne('agencyoffice', ['className' => 'agencyoffice', 'foreignKey' => 'agencyofficeid']);	
     }
 
     /**
@@ -37,12 +39,9 @@ class PropertiesTable extends Table
         $validator
             ->add('propertiesid', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('propertiesid', 'create')
-            ->add('occid', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('occid', 'create')
-            ->notEmpty('occid')
-            ->add('landlordid', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('landlordid', 'create')
-            ->notEmpty('landlordid')
+			->add('agencyofficeid', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('agencyofficeid', 'create')
+            ->notEmpty('agencyofficeid')
             ->add('standardid', 'valid', ['rule' => 'numeric'])
             ->requirePresence('standardid', 'create')
             ->notEmpty('standardid')

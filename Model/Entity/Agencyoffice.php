@@ -27,6 +27,5 @@ class Agencyoffice extends Entity
         'suburb' => true,
         'postcode' => true,
         'agencygroupid' => true,
-        'landlordid' => true,
     ];
 }

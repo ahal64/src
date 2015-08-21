@@ -9,8 +9,20 @@
     <fieldset>
         <legend><?= __('Add Property') ?></legend>
         <?php
-            echo $this->Form->input('occid');
-            echo $this->Form->input('landlordid');
+            
+			
+			if($officeid == null)
+			{
+			   //echo $this->Form->input('agencyofficeid');
+			   
+			   echo $this->Form->label('agencyofficeid: ');
+			   echo $this->Form->select('agencyofficeid',$officelist,['empty' => '(choose one)']);
+			}
+			else
+			{
+			   echo $this->Form->input('agencyofficeid',['default' => $officeid,'readonly' => 'readonly']);
+			}
+
             echo $this->Form->input('standardid');
             echo $this->Form->input('propertymanager');
             echo $this->Form->input('keynumber');

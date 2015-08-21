@@ -9,6 +9,7 @@
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('agencyofficeid') ?></th>
+			<th><?= $this->Paginator->sort('agencygroupid') ?></th>
             <th><?= $this->Paginator->sort('agencyname') ?></th>
             <th><?= $this->Paginator->sort('customercode') ?></th>
             <th><?= $this->Paginator->sort('abn') ?></th>
@@ -22,6 +23,7 @@
     <?php foreach ($agencyoffices as $agencyoffice): ?>
         <tr>
             <td><?= $this->Number->format($agencyoffice->agencyofficeid) ?></td>
+			 <td><?= $this->Number->format($agencyoffice->agencygroupid) ?></td>
             <td><?= h($agencyoffice->agencyname) ?></td>
             <td><?= h($agencyoffice->customercode) ?></td>
             <td><?= h($agencyoffice->abn) ?></td>

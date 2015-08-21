@@ -15,8 +15,7 @@ class Property extends Entity
      * @var array
      */
     protected $_accessible = [
-        'occid' => true,
-        'landlordid' => true,
+	    'agencyofficeid' => true,
         'standardid' => true,
         'propertymanager' => true,
         'keynumber' => true,

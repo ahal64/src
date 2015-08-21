@@ -39,8 +39,6 @@
             <p><?= $this->Number->format($agencyoffice->agencyofficeid) ?></p>
             <h6 class="subheader"><?= __('Agencygroupid') ?></h6>
             <p><?= $this->Number->format($agencyoffice->agencygroupid) ?></p>
-            <h6 class="subheader"><?= __('Landlordid') ?></h6>
-            <p><?= $this->Number->format($agencyoffice->landlordid) ?></p>
         </div>
     </div>
 </div>
@@ -81,4 +79,47 @@
 	    </tbody>
     </table>
    </div>
+</div>
+
+<?= $this->Html->link(__('Add Property'), ['action' => 'clickAddPropertyButton', $agencyoffice->agencyofficeid]) ?>
+<div>
+<!-- show all properties for the selected agency office -->
+<div class="properties view large-10 medium-9 columns">
+    <table cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th><?= $this->Paginator->sort('propertiesid') ?></th>
+            <th><?= $this->Paginator->sort('propertymanager') ?></th>
+            <th><?= $this->Paginator->sort('keynumber') ?></th>
+            <th><?= $this->Paginator->sort('buildingclass') ?></th>
+			<th><?= $this->Paginator->sort('occupancypermit') ?></th>
+			<th><?= $this->Paginator->sort('duedate') ?></th>
+			<th><?= $this->Paginator->sort('propertystatus') ?></th>
+			
+            <th class="actions"><?= __('Actions') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php 
+	foreach ($properties['properties'] as $property): ?>
+		<tr>
+		    <td><?=$property['propertiesid']?></td>
+			<td><?=$property['propertymanager']?></td>
+			<td><?=$property['keynumber']?></td>
+			<td><?=$property['buildingclass']?></td>
+			<td><?=$property['occupancypermit']?></td>
+			<td><?=$property['duedate']?></td>
+			<td><?=$property['propertystatus']?></td>
+
+           
+            <td class="actions">
+                <?= $this->Html->link(__('View'), ['controller' => 'properties', 'action' => 'view', $property['propertiesid']]) ?>
+                <?= $this->Html->link(__('Edit'), ['controller' => 'properties', 'action' => 'edit', $property['propertiesid']]) ?>
+                <?= $this->Form->postLink(__('Delete'), ['controller' => 'properties', 'action' => 'delete', $property['propertiesid']], ['confirm' => __('Are you sure you want to delete # {0}?', $property['propertiesid'])]) ?>
+            </td>
+		</tr>	
+	<?php endforeach; ?>
+	    </tbody>
+    </table>
+</div>
 </div>

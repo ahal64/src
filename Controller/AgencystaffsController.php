@@ -43,8 +43,12 @@ class AgencystaffsController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($officeid=null)
     {
+		$agencyoffices = $this->loadModel('Agencyoffices');
+		$officelist = $agencyoffices->find('list')->select(['agencyofficeid','agencyname']);
+		
+		
         $agencystaff = $this->Agencystaffs->newEntity();
         if ($this->request->is('post')) {
             $agencystaff = $this->Agencystaffs->patchEntity($agencystaff, $this->request->data);
@@ -55,7 +59,7 @@ class AgencystaffsController extends AppController
                 $this->Flash->error('The agencystaff could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('agencystaff'));
+        $this->set(compact('agencystaff','officeid','officelist'));
         $this->set('_serialize', ['agencystaff']);
     }
 

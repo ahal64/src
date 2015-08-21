@@ -36,9 +36,14 @@ class AgencyofficesController extends AppController
         $agencystaffs = $this->Agencyoffices->get($id, [
             'contain' => ['Agencystaffs']
                     ]);
+					
+		$properties = $this->Agencyoffices->get($id, [
+            'contain' => ['Properties']
+                    ]);			
 		
         $this->set('agencyoffice', $agencyoffice);
 		$this->set('agencystaffs', $agencystaffs->toArray());	
+		$this->set('properties', $properties->toArray());
         $this->set('_serialize', ['agencyoffice']);
     }
 
@@ -49,10 +54,24 @@ class AgencyofficesController extends AppController
      */
     public function add($groupid = null)
     {
-		//$this->loadModel('Agencystaffs');
-		
+		// find all agency groups to display in a dropdown box
+		$agencygroups = $this->loadModel('Agencygroups');
+	    //$grouplist = $agencygroups->find('list')->extract('agencygroupid');
+		$grouplist = $agencygroups->find('list')->select(['agencygroupid','groupname']);
+		//$grouplist = $query->toArray();
+		//$grouplist = $agencygroups->find('list',array('fields' =>select(['agencygroupid']),select(['groupname'])));
+
         $agencyoffice = $this->Agencyoffices->newEntity();
         if ($this->request->is('post')) {
+			
+			//swap groupname with the id
+		/*	$idOption = $agencygroups
+			            ->select(['agencygroupid'])
+						->where(['groupname' => ])
+			$this->data['Agencygroups']['agencygroupid'] = $idOption;*/
+			
+			
+			
             $agencyoffice = $this->Agencyoffices->patchEntity($agencyoffice, $this->request->data);
             if ($this->Agencyoffices->save($agencyoffice)) {
                 $this->Flash->success('The agencyoffice has been saved.');
@@ -61,7 +80,7 @@ class AgencyofficesController extends AppController
                 $this->Flash->error('The agencyoffice could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('agencyoffice','groupid'));
+        $this->set(compact('agencyoffice','groupid','grouplist'));
         $this->set('_serialize', ['agencyoffice']);
     }
 
@@ -108,4 +127,21 @@ class AgencyofficesController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+	
+	public function clickAddStaffButton($currentagencyoffice=null)
+	{
+		$this->redirect(array(
+		      'controller' => 'agencystaffs',
+		      'action' => 'add',
+			  $currentagencyoffice));	
+	}
+	
+	public function clickAddPropertyButton($currentagencyoffice=null)
+	{
+		$this->redirect(array(
+		      'controller' => 'properties',
+		      'action' => 'add',
+			  $currentagencyoffice));
+		
+	}
 }

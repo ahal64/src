@@ -9,6 +9,7 @@
     <fieldset>
         <legend><?= __('Add Agencyoffice') ?></legend>
         <?php
+
             echo $this->Form->input('agencyname');
             echo $this->Form->input('customercode');
             echo $this->Form->input('abn');
@@ -21,18 +22,17 @@
             echo $this->Form->input('suburb');
             echo $this->Form->input('postcode');
 			
-			
 			if($groupid == null)
 			{
-				 echo $this->Form->input('agencygroupid');
+				echo $this->Form->label('agencygroupid: ');
+				echo $this->Form->select('agencygroupid',$grouplist,['empty' => '(choose one)']);
 			}
 			else
 			{
-				echo $this->Form->label('agencygroupid: ');
-				echo $groupid;
+				echo $this->Form->input('agencygroupid', ['default' => $groupid,'readonly' => 'readonly']);
+				//echo $this->Form->label('agencygroupid: ');
+				//echo $groupid;
 			}
-            echo $this->Form->input('landlordid');
-			
         ?>
     </fieldset>
 	

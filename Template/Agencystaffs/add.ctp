@@ -12,7 +12,21 @@
             echo $this->Form->input('firstname');
             echo $this->Form->input('lastname');
             echo $this->Form->input('mobile');
-			echo $this->Form->input('agencyofficeid');
+			
+			if($officeid == null)
+			{
+				//echo $this->Form->input('agencyofficeid');
+				
+				echo $this->Form->label('agencyofficeid: ');
+			    echo $this->Form->select('agencyofficeid',$officelist,['empty' => '(choose one)']);
+			}
+			else
+			{
+				echo $this->Form->input('agencyofficeid',['default' => $officeid,'readonly' => 'readonly']);
+				//echo $this->Form->label('agencyofficeid: ');
+				//echo $officeid;
+			}
+			
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
