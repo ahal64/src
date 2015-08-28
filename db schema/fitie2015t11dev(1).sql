@@ -1,0 +1,211 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Aug 28, 2015 at 05:28 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `fitie2015t11dev`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agencygroups`
+--
+
+CREATE TABLE IF NOT EXISTS `agencygroups` (
+  `agencygroupid` int(11) NOT NULL AUTO_INCREMENT,
+  `groupname` varchar(255) NOT NULL,
+  PRIMARY KEY (`agencygroupid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agencyoffices`
+--
+
+CREATE TABLE IF NOT EXISTS `agencyoffices` (
+  `agencyofficeid` int(11) NOT NULL AUTO_INCREMENT,
+  `agencyname` varchar(20) NOT NULL,
+  `customercode` varchar(20) NOT NULL,
+  `abn` varchar(11) NOT NULL,
+  `phone` varchar(12) DEFAULT NULL,
+  `fax` varchar(12) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `website` varchar(30) DEFAULT NULL,
+  `address1` varchar(20) DEFAULT NULL,
+  `address2` varchar(20) DEFAULT NULL,
+  `suburb` varchar(20) DEFAULT NULL,
+  `postcode` varchar(10) DEFAULT NULL,
+  `agencygroupid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`agencyofficeid`),
+  KEY `agencygroupkey` (`agencygroupid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agencystaffs`
+--
+
+CREATE TABLE IF NOT EXISTS `agencystaffs` (
+  `agencyofficeid` int(11) NOT NULL,
+  `agencystaffid` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `mobile` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`agencystaffid`),
+  KEY `agencyofficeid_fk` (`agencyofficeid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `landlords`
+--
+
+CREATE TABLE IF NOT EXISTS `landlords` (
+  `landlordid` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  `address1` varchar(20) DEFAULT NULL,
+  `address2` varchar(20) DEFAULT NULL,
+  `mobile` varchar(12) DEFAULT NULL,
+  `homephone` varchar(11) DEFAULT NULL,
+  `officephone` varchar(11) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`landlordid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `occupants`
+--
+
+CREATE TABLE IF NOT EXISTS `occupants` (
+  `occid` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  `address1` varchar(30) NOT NULL,
+  `address2` varchar(30) NOT NULL,
+  `mobile` varchar(12) NOT NULL,
+  `officephone` varchar(11) DEFAULT NULL,
+  `homephone` varchar(11) DEFAULT NULL,
+  `otherphone` int(12) DEFAULT NULL,
+  PRIMARY KEY (`occid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `properties`
+--
+
+CREATE TABLE IF NOT EXISTS `properties` (
+  `propertiesid` int(11) NOT NULL AUTO_INCREMENT,
+  `agencyofficeid` int(11) NOT NULL,
+  `standardid` int(11) NOT NULL,
+  `propertymanager` varchar(20) DEFAULT NULL,
+  `keynumber` varchar(20) DEFAULT NULL,
+  `buildingclass` varchar(20) DEFAULT NULL,
+  `occupancypermit` varchar(20) DEFAULT NULL,
+  `address1` varchar(30) NOT NULL,
+  `address2` varchar(30) DEFAULT NULL,
+  `notes` varchar(255) DEFAULT NULL,
+  `duedate` date DEFAULT NULL,
+  `propertystatus` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`propertiesid`),
+  KEY `standard_key` (`standardid`),
+  KEY `agencyofficeid` (`agencyofficeid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `standards`
+--
+
+CREATE TABLE IF NOT EXISTS `standards` (
+  `standardid` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `notes` varchar(255) DEFAULT NULL,
+  `actionrequired` varchar(50) DEFAULT NULL,
+  `passorfail` char(1) DEFAULT NULL,
+  `extracomments` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`standardid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `standards`
+--
+
+INSERT INTO `standards` (`standardid`, `name`, `description`, `notes`, `actionrequired`, `passorfail`, `extracomments`) VALUES
+(2, 'AS 1851 10', 'Fire extinguisher one year', '', 'clean fire extinguisher, make sure the pin is in ', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `role`) VALUES
+(3, 'jason', '$2y$10$yPJEHMyslJ9mh6pw3yA3b.damnNmUXweRCUq7N4bl0ki7z0NFguCq', 'aaa', 'aaa', 'ADMIN'),
+(9, 'david', '$2y$10$obsdm7oXB.yIXXD.uNi15.9FNRsEhSdT12LDeLYsAVN4nXBYWqNfy', 'david', 'grant', 'ADMIN'),
+(10, 'brendon', '$2y$10$t9jBmc9P1RtDjQKtVcahz.noBVmehfgmw1SqcwOKv.rlhoKigl60i', 'brendon', 'taylor', 'ADMIN');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `agencyoffices`
+--
+ALTER TABLE `agencyoffices`
+  ADD CONSTRAINT `agencyoffices_ibfk_1` FOREIGN KEY (`agencygroupid`) REFERENCES `agencygroups` (`agencygroupid`);
+
+--
+-- Constraints for table `agencystaffs`
+--
+ALTER TABLE `agencystaffs`
+  ADD CONSTRAINT `agencystaffs_ibfk_1` FOREIGN KEY (`agencyofficeid`) REFERENCES `agencyoffices` (`agencyofficeid`);
+
+--
+-- Constraints for table `properties`
+--
+ALTER TABLE `properties`
+  ADD CONSTRAINT `properties_ibfk_3` FOREIGN KEY (`standardid`) REFERENCES `standards` (`standardid`),
+  ADD CONSTRAINT `properties_ibfk_4` FOREIGN KEY (`agencyofficeid`) REFERENCES `agencyoffices` (`agencyofficeid`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
