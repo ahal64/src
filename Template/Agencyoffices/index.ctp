@@ -23,7 +23,7 @@
     <?php foreach ($agencyoffices as $agencyoffice): ?>
         <tr>
             <td><?= $this->Number->format($agencyoffice->agencyofficeid) ?></td>
-			 <td><?= $this->Number->format($agencyoffice->agencygroupid) ?></td>
+			<td><?= $this->Number->format($agencyoffice->agencygroupid) ?></td>
             <td><?= h($agencyoffice->agencyname) ?></td>
             <td><?= h($agencyoffice->customercode) ?></td>
             <td><?= h($agencyoffice->abn) ?></td>

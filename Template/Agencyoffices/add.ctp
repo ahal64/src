@@ -24,14 +24,12 @@
 			
 			if($groupid == null)
 			{
-				echo $this->Form->label('agencygroupid: ');
+				echo $this->Form->label('agency group: ');
 				echo $this->Form->select('agencygroupid',$grouplist,['empty' => '(choose one)']);
 			}
 			else
 			{
 				echo $this->Form->input('agencygroupid', ['default' => $groupid,'readonly' => 'readonly']);
-				//echo $this->Form->label('agencygroupid: ');
-				//echo $groupid;
 			}
         ?>
     </fieldset>

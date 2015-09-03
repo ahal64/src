@@ -56,22 +56,11 @@ class AgencyofficesController extends AppController
     {
 		// find all agency groups to display in a dropdown box
 		$agencygroups = $this->loadModel('Agencygroups');
-	    //$grouplist = $agencygroups->find('list')->extract('agencygroupid');
-		$grouplist = $agencygroups->find('list')->select(['agencygroupid','groupname']);
-		//$grouplist = $query->toArray();
-		//$grouplist = $agencygroups->find('list',array('fields' =>select(['agencygroupid']),select(['groupname'])));
-
-        $agencyoffice = $this->Agencyoffices->newEntity();
-        if ($this->request->is('post')) {
-			
-			//swap groupname with the id
-		/*	$idOption = $agencygroups
-			            ->select(['agencygroupid'])
-						->where(['groupname' => ])
-			$this->data['Agencygroups']['agencygroupid'] = $idOption;*/
-			
-			
-			
+	    $grouplist = $agencygroups->find('list')->select(['agencygroupid','groupname']);
+		
+		$agencyoffice = $this->Agencyoffices->newEntity();
+        if ($this->request->is('post')) 
+		{	   	
             $agencyoffice = $this->Agencyoffices->patchEntity($agencyoffice, $this->request->data);
             if ($this->Agencyoffices->save($agencyoffice)) {
                 $this->Flash->success('The agencyoffice has been saved.');

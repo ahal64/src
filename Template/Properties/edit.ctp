@@ -15,7 +15,7 @@
     <fieldset>
         <legend><?= __('Edit Property') ?></legend>
         <?php
-            echo $this->Form->input('agencyofficeid');
+            //echo $this->Form->input('agencyofficeid');
             echo $this->Form->input('standardid');
             echo $this->Form->input('propertymanager');
             echo $this->Form->input('keynumber');

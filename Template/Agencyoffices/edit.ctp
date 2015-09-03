@@ -26,7 +26,7 @@
             echo $this->Form->input('address2');
             echo $this->Form->input('suburb');
             echo $this->Form->input('postcode');
-            echo $this->Form->input('agencygroupid');
+            //echo $this->Form->input('agencygroupid');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

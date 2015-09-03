@@ -15,7 +15,7 @@
 			{
 			   //echo $this->Form->input('agencyofficeid');
 			   
-			   echo $this->Form->label('agencyofficeid: ');
+			   echo $this->Form->label('agency office name: ');
 			   echo $this->Form->select('agencyofficeid',$officelist,['empty' => '(choose one)']);
 			}
 			else

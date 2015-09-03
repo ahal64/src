@@ -22,7 +22,7 @@ class AgencygroupsTable extends Table
     public function initialize(array $config)
     {
         $this->table('agencygroups');
-        $this->displayField('agencygroupid');
+        $this->displayField('groupname');
         $this->primaryKey('agencygroupid');
 		
 		//hierarchical table relationship

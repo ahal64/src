@@ -16,7 +16,6 @@
 			if($officeid == null)
 			{
 				//echo $this->Form->input('agencyofficeid');
-				
 				echo $this->Form->label('agencyofficeid: ');
 			    echo $this->Form->select('agencyofficeid',$officelist,['empty' => '(choose one)']);
 			}
