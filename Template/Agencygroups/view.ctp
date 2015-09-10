@@ -25,7 +25,7 @@
 
 
 <div>
-<div class="agencyoffices index large-10 medium-9 columns">
+<div class="equipment index large-10 medium-9 columns">
     <table cellpadding="0" cellspacing="0">
     <thead>
         <tr>

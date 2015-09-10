@@ -16,7 +16,6 @@ class Property extends Entity
      */
     protected $_accessible = [
 	    'agencyofficeid' => true,
-        'standardid' => true,
         'propertymanager' => true,
         'keynumber' => true,
         'buildingclass' => true,

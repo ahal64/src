@@ -35,8 +35,6 @@
             <p><?= $this->Number->format($property->occid) ?></p>
             <h6 class="subheader"><?= __('Landlordid') ?></h6>
             <p><?= $this->Number->format($property->landlordid) ?></p>
-            <h6 class="subheader"><?= __('Standardid') ?></h6>
-            <p><?= $this->Number->format($property->standardid) ?></p>
         </div>
         <div class="large-2 columns dates end">
             <h6 class="subheader"><?= __('Duedate') ?></h6>

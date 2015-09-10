@@ -15,11 +15,11 @@
    <li><?= $this->Html->link(__('Agency Group'), ['controller'=>'agencygroups','action' => 'index']) ?></li>
    <li><?= $this->Html->link(__('Agency Staff'), ['controller'=>'agencystaffs','action' => 'index']) ?></li>
    <li><?= $this->Html->link(__('Agency Offices'), ['controller'=>'agencyoffices','action' => 'index']) ?></li>
-		
+   
+   <b>Item Management</b>
+   <li><?= $this->Html->link(__('Equipment Type'), ['controller'=>'equipmenttypes','action' => 'index']) ?></li>
+   <li><?= $this->Html->link(__('Equipment'), ['controller'=>'equipment','action' => 'index']) ?></li>
+   <li><?= $this->Html->link(__('Item List'), ['controller'=>'equprop','action' => 'index']) ?></li>	
 </ul>
-
-
-
-
 
 <li><?= $this->Html->link(__('Logout'), ['action' => 'logout']) ?></li>

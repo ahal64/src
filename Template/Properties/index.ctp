@@ -10,7 +10,6 @@
         <tr>
             <th><?= $this->Paginator->sort('propertiesid') ?></th>
             <th><?= $this->Paginator->sort('agencyofficeid') ?></th>
-            <th><?= $this->Paginator->sort('standardid') ?></th>
             <th><?= $this->Paginator->sort('propertymanager') ?></th>
             <th><?= $this->Paginator->sort('keynumber') ?></th>
             <th><?= $this->Paginator->sort('buildingclass') ?></th>
@@ -22,7 +21,6 @@
         <tr>
             <td><?= $this->Number->format($property->propertiesid) ?></td>
             <td><?= $this->Number->format($property->agencyofficeid) ?></td>
-            <td><?= $this->Number->format($property->standardid) ?></td>
             <td><?= h($property->propertymanager) ?></td>
             <td><?= h($property->keynumber) ?></td>
             <td><?= h($property->buildingclass) ?></td>

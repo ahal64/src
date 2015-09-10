@@ -22,8 +22,7 @@
 			{
 			   echo $this->Form->input('agencyofficeid',['default' => $officeid,'readonly' => 'readonly']);
 			}
-
-            echo $this->Form->input('standardid');
+			
             echo $this->Form->input('propertymanager');
             echo $this->Form->input('keynumber');
             echo $this->Form->input('buildingclass');
