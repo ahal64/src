@@ -18,11 +18,16 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <!DOCTYPE html>
 <html>
 <head>
+	
     <?= $this->Html->charset() ?>
+	
 	
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<div class="header-img">
+			<img src="https://m2.behance.net/rendition/pm/1477397/disp/eec45153b065ca6bbc77fde2d40bf463.jpg" height="210" width="210">
+    </div>
     <title>
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
@@ -43,26 +48,70 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <header>
-        <div class="header-title">
-            <span><?= $this->fetch('title') ?></span>
-        </div>
-        <div class="header-help">
-            <span><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></span>
-            <span><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></span>
-        </div>
-    </header>
-    <div id="container">
-
-        <div id="content">
-            <?= $this->Flash->render() ?>
-
-            <div class="row">
-                <?= $this->fetch('content') ?>
-            </div>
-        </div>
-        <footer>
-        </footer>
+<div class="container">
+    <div class="jumbotron">
+        <span><h2><?= $this->fetch('title') ?></h2></span>
     </div>
-</body>
+
+    <div id="content">
+        <div class="row">
+			<div class="col-sm-3 sidebarStyle">
+				<div class="text-xs-center text-sm-left">
+					<ul class="nav nav-pills nav-stacked">
+                        <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'logout']) ?>"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
+                    </ul>
+					<ul class="nav nav-pills nav-stacked" id="stacked-menu">
+						<li class="active"><a href="#"><span class="glyphicon glyphicon-off"></span>  Administration</a></li>
+						<li><a href="#" data-toggle="collapse" data-target="#users"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+                        <ul class="nav nav-pills nav-stacked collapse" id="users">
+                            <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-plus"></span> Add User</a></li>
+                            <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-user"></span> List Users</a></li>
+    					</ul>
+						<li><a href="<?= $this->Url->build(['controller' => 'Standards', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-saved"></span> Standards</a></li>
+					</ul>
+					<ul class="nav nav-pills nav-stacked">
+						<li class="active"><a href="#"><span class="glyphicon glyphicon-off"></span>  Property Management</a></li>
+						<li><a href="#" data-toggle="collapse" data-target="#properties"><span class="glyphicon glyphicon-home"></span> Properties</a></li>
+                        <ul class="nav nav-pills nav-stacked collapse" id="properties">
+    						<li><a href="<?= $this->Url->build(['controller' => 'Properties', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-plus"></span> Add Property</a></li>
+    						<li><a href="<?= $this->Url->build(['controller' => 'Properties', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-home"></span> List Properties</a></li>
+    					</ul>
+						<li><a href="#" data-toggle="collapse" data-target="#landlords"><span class="glyphicon glyphicon-user"></span> Landlords</a></li>
+    					<ul class="nav nav-pills nav-stacked collapse" id="landlords">
+    						<li><a href="<?= $this->Url->build(['controller' => 'Landlords', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-plus"></span> Add Landlord</a></li>
+    						<li><a href="<?= $this->Url->build(['controller' => 'Landlords', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-user"></span> List Landlords</a></li>
+    					</ul>
+						<li><a href="#" data-toggle="collapse" data-target="#occupants"><span class="glyphicon glyphicon-user"></span> Occupants</a></li>
+    					<ul class="nav nav-pills nav-stacked collapse" id="occupants">
+    						<li><a href="<?= $this->Url->build(['controller' => 'Occupants', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-plus"></span> Add Occupant</a></li>
+    						<li><a href="<?= $this->Url->build(['controller' => 'Occupants', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-user"></span> List Occupants</a></li>
+    					</ul>
+					</ul>
+					<ul class="nav nav-pills nav-stacked">
+						<li class="active"><a href="#"><span class="glyphicon glyphicon-off"></span>  Agency Management</a></li>
+						<li><a href="#" data-toggle="collapse" data-target="#agency_groups"><span class="glyphicon glyphicon-folder-open"></span> Agency Groups</a></li>
+    					<ul class="nav nav-pills nav-stacked collapse" id="agency_groups">
+    						<li><a href="<?= $this->Url->build(['controller' => 'Agencygroups', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-plus"></span> Add Agency Group</a></li>
+    						<li><a href="<?= $this->Url->build(['controller' => 'Agencygroups', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-folder-open"></span> List Agency Groups</a></li>
+    					</ul>
+						<li><a href="#" data-toggle="collapse" data-target="#agency_offices"><span class="glyphicon glyphicon-phone-alt"></span> Agency Offices</a></li>
+    					<ul class="nav nav-pills nav-stacked collapse" id="agency_offices">
+    						<li><a href="<?= $this->Url->build(['controller' => 'Agencyoffices', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-plus"></span> Add Agency Office</a></li>
+    						<li><a href="<?= $this->Url->build(['controller' => 'Agencyoffices', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-phone-alt"></span> List Agency Offices</a></li>
+    					</ul>
+						<li><a href="#" data-toggle="collapse" data-target="#agency_staff"><span class="glyphicon glyphicon-user"></span> Agency Staff</a></li>
+    					<ul class="nav nav-pills nav-stacked collapse" id="agency_staff">
+    						<li><a href="<?= $this->Url->build(['controller' => 'Agencystaffs', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-plus"></span> Add Agency Staff</a></li>
+    						<li><a href="<?= $this->Url->build(['controller' => 'Agencystaffs', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-user"></span> List Agency Staff</a></li>
+    					</ul>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-sm-9 contentAreaStyle">
+				<?= $this->fetch('content') ?>
+			</div>
+        </div>
+    </div>
+</div>
 </html>
