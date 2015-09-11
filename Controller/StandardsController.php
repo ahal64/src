@@ -43,8 +43,12 @@ class StandardsController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($equipmentid = null)
     {
+		//find all standards to display in a dropdown box
+		$eqipments = $this->loadModel('Equipment');
+		$equipmentlist = $eqipments->find('list')->select(['equipid','name']);
+		
         $standard = $this->Standards->newEntity();
         if ($this->request->is('post')) {
             $standard = $this->Standards->patchEntity($standard, $this->request->data);
@@ -55,7 +59,7 @@ class StandardsController extends AppController
                 $this->Flash->error('The standard could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('standard'));
+        $this->set(compact('standard','equipmentid','equipmentlist'));
         $this->set('_serialize', ['standard']);
     }
 

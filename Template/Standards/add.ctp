@@ -9,6 +9,16 @@
     <fieldset>
         <legend><?= __('Add Standard') ?></legend>
         <?php
+			if($equipmentid == null)
+			{
+				echo $this->Form->label('equipment: ');
+				echo $this->Form->select('equipid',$equipmentlist,['empty' => '(choose one)']);
+			}
+			else
+			{
+				echo $this->Form->input('equipid', ['default' => $equipmentid,'readonly' => 'readonly']);
+			}
+		    //echo $this->Form->input('equipid');
             echo $this->Form->input('name');
             echo $this->Form->input('description');
             echo $this->Form->input('notes');

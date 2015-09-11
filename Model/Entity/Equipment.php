@@ -16,7 +16,6 @@ class Equipment extends Entity
      */
     protected $_accessible = [
         'eqtypeid' => true,
-        'standardid' => true,
         'name' => true,
         'notes' => true,
         'installationdate' => true,

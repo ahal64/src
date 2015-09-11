@@ -24,6 +24,8 @@ class StandardsTable extends Table
         $this->table('standards');
         $this->displayField('name');
         $this->primaryKey('standardid');
+		
+		$this->hasOne('equipment', ['className' => 'equipment', 'foreignKey' => 'equipid']);
     }
 
     /**
@@ -38,6 +40,9 @@ class StandardsTable extends Table
             ->add('standardid', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('standardid', 'create')
             ->requirePresence('name', 'create')
+			->add('equipid', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('equipid', 'create')
+            ->notEmpty('equipid')
             ->notEmpty('name')
             ->allowEmpty('description')
             ->allowEmpty('notes')

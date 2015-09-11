@@ -31,10 +31,20 @@ class EquipmentController extends AppController
      */
     public function view($id = null)
     {
-        $equipment = $this->Equipment->get($id, [
+		//original code
+       /** $equipment = $this->Equipment->get($id, [
             'contain' => []
+        ]);**/
+		$equipment = $this->Equipment->get($id);
+		
+		//all the standards for selected equipment(item)
+		$standards = $this->Equipment->get($id, [
+            'contain' => ['standards']
         ]);
+		
+		
         $this->set('equipment', $equipment);
+		$this->set('standards', $standards->toArray());
         $this->set('_serialize', ['equipment']);
     }
 
@@ -106,4 +116,12 @@ class EquipmentController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+	
+	public function clickAddStandardButton($currentequipment=null)
+	{
+		$this->redirect(array(
+		      'controller' => 'standards',
+		      'action' => 'add',
+			  $currentequipment));
+	}
 }

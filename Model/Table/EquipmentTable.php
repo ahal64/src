@@ -24,9 +24,8 @@ class EquipmentTable extends Table
         $this->table('equipment');
         $this->displayField('name');
         $this->primaryKey('equipid');
-		
 		$this->hasOne('equipmenttype', ['className' => 'equipmenttype', 'foreignKey' => 'eqtypeid']);
-        
+        $this->hasMany('standards', ['className' => 'standards', 'foreignKey' => 'equipid']);
     }
 
     /**
@@ -43,20 +42,13 @@ class EquipmentTable extends Table
             ->add('eqtypeid', 'valid', ['rule' => 'numeric'])
             ->requirePresence('eqtypeid', 'create')
             ->notEmpty('eqtypeid')
-            ->add('standardid', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('standardid', 'create')
-            ->notEmpty('standardid')
             ->requirePresence('name', 'create')
-            ->notEmpty('name')
-            ->requirePresence('notes', 'create')
-            ->notEmpty('notes')
-            ->add('installationdate', 'valid', ['rule' => 'date'])
-            ->requirePresence('installationdate', 'create')
-            ->notEmpty('installationdate')
-            ->requirePresence('existing_or_required', 'create')
-            ->notEmpty('existing_or_required')
-            ->requirePresence('barcode', 'create')
-            ->notEmpty('barcode');
+            ->notEmpty('name')         
+            ->allowEmpty('notes')
+            ->add('installationdate', 'valid', ['rule' => 'date'])          
+            ->allowEmpty('installationdate')
+            ->allowEmpty('existing_or_required')
+            ->allowEmpty('barcode');
 
         return $validator;
     }

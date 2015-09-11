@@ -9,6 +9,7 @@
     <thead>
         <tr>
             <th><?= $this->Paginator->sort('standardid') ?></th>
+			<th><?= $this->Paginator->sort('equipid') ?></th>
             <th><?= $this->Paginator->sort('name') ?></th>
             <th><?= $this->Paginator->sort('description') ?></th>
             <th><?= $this->Paginator->sort('notes') ?></th>
@@ -22,6 +23,7 @@
     <?php foreach ($standards as $standard): ?>
         <tr>
             <td><?= $this->Number->format($standard->standardid) ?></td>
+			<td><?= $this->Number->format($standard->equipid) ?></td>
             <td><?= h($standard->name) ?></td>
             <td><?= h($standard->description) ?></td>
             <td><?= h($standard->notes) ?></td>
@@ -34,10 +36,10 @@
                 <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $standard->standardid], ['confirm' => __('Are you sure you want to delete # {0}?', $standard->standardid)]) ?>
             </td>
         </tr>
-
     <?php endforeach; ?>
     </tbody>
     </table>
+	
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->prev('< ' . __('previous')) ?>

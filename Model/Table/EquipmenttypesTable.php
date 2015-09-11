@@ -43,8 +43,7 @@ class EquipmenttypesTable extends Table
             ->allowEmpty('eqtypeid', 'create')
             ->requirePresence('name', 'create')
             ->notEmpty('name')
-            ->requirePresence('description', 'create')
-            ->notEmpty('description');
+            ->allowEmpty('description');
 
         return $validator;
     }

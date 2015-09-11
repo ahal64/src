@@ -27,6 +27,8 @@
         <div class="large-2 columns numbers end">
             <h6 class="subheader"><?= __('Standardid') ?></h6>
             <p><?= $this->Number->format($standard->standardid) ?></p>
+			<h6 class="subheader"><?= __('Equipid') ?></h6>
+            <p><?= $this->Number->format($standard->equipid) ?></p>
         </div>
     </div>
 </div>

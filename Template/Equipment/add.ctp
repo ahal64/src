@@ -20,9 +20,6 @@
 			{
 				echo $this->Form->input('eqtypeid',['default' => $equtypeid,'readonly' => 'readonly']);
 			}
-		
-            //echo $this->Form->input('eqtypeid');
-            echo $this->Form->input('standardid');
             echo $this->Form->input('name');
             echo $this->Form->input('notes');
             echo $this->Form->input('installationdate');

@@ -10,7 +10,6 @@
         <tr>
             <th><?= $this->Paginator->sort('equipid') ?></th>
             <th><?= $this->Paginator->sort('eqtypeid') ?></th>
-            <th><?= $this->Paginator->sort('standardid') ?></th>
             <th><?= $this->Paginator->sort('name') ?></th>
             <th><?= $this->Paginator->sort('notes') ?></th>
             <th><?= $this->Paginator->sort('installationdate') ?></th>
@@ -23,7 +22,6 @@
         <tr>
             <td><?= $this->Number->format($equipment->equipid) ?></td>
             <td><?= $this->Number->format($equipment->eqtypeid) ?></td>
-            <td><?= $this->Number->format($equipment->standardid) ?></td>
             <td><?= h($equipment->name) ?></td>
             <td><?= h($equipment->notes) ?></td>
             <td><?= h($equipment->installationdate) ?></td>

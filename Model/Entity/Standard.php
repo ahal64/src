@@ -15,6 +15,7 @@ class Standard extends Entity
      * @var array
      */
     protected $_accessible = [
+	    'equipid' => true,
         'name' => true,
         'description' => true,
         'notes' => true,
