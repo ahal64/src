@@ -31,10 +31,18 @@ class StandardsController extends AppController
      */
     public function view($id = null)
     {
-        $standard = $this->Standards->get($id, [
+		//original code
+       /* $standard = $this->Standards->get($id, [
             'contain' => []
-        ]);
+        ]);*/
+		$standard = $this->Standards->get($id);
+		//all tasks of selected standard
+		$tasks = $this->Standards->get($id, [
+						'contain' => ['Tasks']
+					]);
+					
         $this->set('standard', $standard);
+		$this->set('tasks', $tasks->toArray());	
         $this->set('_serialize', ['standard']);
     }
 
@@ -106,4 +114,12 @@ class StandardsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+	
+	public function clickAddTaskButton($currentstandard=null)
+	{
+		$this->redirect(array(
+		      'controller' => 'tasks',
+		      'action' => 'add',
+			  $currentstandard));
+	}
 }

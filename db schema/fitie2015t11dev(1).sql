@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2015 at 05:28 AM
+-- Generation Time: Sep 13, 2015 at 05:30 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,7 +30,18 @@ CREATE TABLE IF NOT EXISTS `agencygroups` (
   `agencygroupid` int(11) NOT NULL AUTO_INCREMENT,
   `groupname` varchar(255) NOT NULL,
   PRIMARY KEY (`agencygroupid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `agencygroups`
+--
+
+INSERT INTO `agencygroups` (`agencygroupid`, `groupname`) VALUES
+(2, 'Frank Facey'),
+(3, 'Barry Plant'),
+(4, 'LJ Hooker'),
+(5, 'Hocking Stuart'),
+(6, 'Ray White');
 
 -- --------------------------------------------------------
 
@@ -54,7 +65,15 @@ CREATE TABLE IF NOT EXISTS `agencyoffices` (
   `agencygroupid` int(11) DEFAULT NULL,
   PRIMARY KEY (`agencyofficeid`),
   KEY `agencygroupkey` (`agencygroupid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `agencyoffices`
+--
+
+INSERT INTO `agencyoffices` (`agencyofficeid`, `agencyname`, `customercode`, `abn`, `phone`, `fax`, `email`, `website`, `address1`, `address2`, `suburb`, `postcode`, `agencygroupid`) VALUES
+(2, 'clayton office', '4234243', '434234', '97950000', '979511111', 'test11111@test.com', '', '', '', '', '', 4),
+(3, '111', '111', '111', '', '', 'test@test.com', '', '', '', '', '', 3);
 
 -- --------------------------------------------------------
 
@@ -71,6 +90,67 @@ CREATE TABLE IF NOT EXISTS `agencystaffs` (
   PRIMARY KEY (`agencystaffid`),
   KEY `agencyofficeid_fk` (`agencyofficeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `equipment`
+--
+
+CREATE TABLE IF NOT EXISTS `equipment` (
+  `equipid` int(11) NOT NULL AUTO_INCREMENT,
+  `eqtypeid` int(11) NOT NULL,
+  `name` varchar(120) NOT NULL,
+  `notes` varchar(120) DEFAULT NULL,
+  `installationdate` date DEFAULT NULL,
+  `existing_or_required` varchar(20) DEFAULT NULL,
+  `barcode` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`equipid`),
+  KEY `eqtypeid` (`eqtypeid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `equipment`
+--
+
+INSERT INTO `equipment` (`equipid`, `eqtypeid`, `name`, `notes`, `installationdate`, `existing_or_required`, `barcode`) VALUES
+(1, 1, '8 months fire extinguisher', '', '2015-09-13', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `equipmenttypes`
+--
+
+CREATE TABLE IF NOT EXISTS `equipmenttypes` (
+  `eqtypeid` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(120) NOT NULL,
+  `description` varchar(120) DEFAULT NULL,
+  PRIMARY KEY (`eqtypeid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `equipmenttypes`
+--
+
+INSERT INTO `equipmenttypes` (`eqtypeid`, `name`, `description`) VALUES
+(1, 'fire extinguisher', 'extinguishes fire');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `equ_prop`
+--
+
+CREATE TABLE IF NOT EXISTS `equ_prop` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `equipid` int(11) NOT NULL,
+  `propertiesid` int(11) NOT NULL,
+  `duedate` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `equipid` (`equipid`,`propertiesid`),
+  KEY `propertiesid` (`propertiesid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -119,7 +199,6 @@ CREATE TABLE IF NOT EXISTS `occupants` (
 CREATE TABLE IF NOT EXISTS `properties` (
   `propertiesid` int(11) NOT NULL AUTO_INCREMENT,
   `agencyofficeid` int(11) NOT NULL,
-  `standardid` int(11) NOT NULL,
   `propertymanager` varchar(20) DEFAULT NULL,
   `keynumber` varchar(20) DEFAULT NULL,
   `buildingclass` varchar(20) DEFAULT NULL,
@@ -130,7 +209,6 @@ CREATE TABLE IF NOT EXISTS `properties` (
   `duedate` date DEFAULT NULL,
   `propertystatus` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`propertiesid`),
-  KEY `standard_key` (`standardid`),
   KEY `agencyofficeid` (`agencyofficeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -142,21 +220,48 @@ CREATE TABLE IF NOT EXISTS `properties` (
 
 CREATE TABLE IF NOT EXISTS `standards` (
   `standardid` int(11) NOT NULL AUTO_INCREMENT,
+  `equipid` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `notes` varchar(255) DEFAULT NULL,
   `actionrequired` varchar(50) DEFAULT NULL,
   `passorfail` char(1) DEFAULT NULL,
   `extracomments` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`standardid`)
+  PRIMARY KEY (`standardid`),
+  KEY `equipid` (`equipid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `standards`
 --
 
-INSERT INTO `standards` (`standardid`, `name`, `description`, `notes`, `actionrequired`, `passorfail`, `extracomments`) VALUES
-(2, 'AS 1851 10', 'Fire extinguisher one year', '', 'clean fire extinguisher, make sure the pin is in ', '', '');
+INSERT INTO `standards` (`standardid`, `equipid`, `name`, `description`, `notes`, `actionrequired`, `passorfail`, `extracomments`) VALUES
+(1, 1, 'AC 10110', '', '', '', '', ''),
+(2, 1, 'ac 5454545', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tasks`
+--
+
+CREATE TABLE IF NOT EXISTS `tasks` (
+  `tasksid` int(11) NOT NULL AUTO_INCREMENT,
+  `standardid` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `duedate` date DEFAULT NULL,
+  `status` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`tasksid`),
+  KEY `standardid` (`standardid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `tasks`
+--
+
+INSERT INTO `tasks` (`tasksid`, `standardid`, `name`, `duedate`, `status`) VALUES
+(1, 1, 'check nozzile', '2015-09-13', ''),
+(3, 1, 'check pressure gauge', '2015-09-13', '');
 
 -- --------------------------------------------------------
 
@@ -200,11 +305,35 @@ ALTER TABLE `agencystaffs`
   ADD CONSTRAINT `agencystaffs_ibfk_1` FOREIGN KEY (`agencyofficeid`) REFERENCES `agencyoffices` (`agencyofficeid`);
 
 --
+-- Constraints for table `equipment`
+--
+ALTER TABLE `equipment`
+  ADD CONSTRAINT `equipment_ibfk_1` FOREIGN KEY (`eqtypeid`) REFERENCES `equipmenttypes` (`eqtypeid`);
+
+--
+-- Constraints for table `equ_prop`
+--
+ALTER TABLE `equ_prop`
+  ADD CONSTRAINT `equ_prop_ibfk_1` FOREIGN KEY (`equipid`) REFERENCES `equipment` (`equipid`),
+  ADD CONSTRAINT `equ_prop_ibfk_2` FOREIGN KEY (`propertiesid`) REFERENCES `properties` (`propertiesid`);
+
+--
 -- Constraints for table `properties`
 --
 ALTER TABLE `properties`
-  ADD CONSTRAINT `properties_ibfk_3` FOREIGN KEY (`standardid`) REFERENCES `standards` (`standardid`),
   ADD CONSTRAINT `properties_ibfk_4` FOREIGN KEY (`agencyofficeid`) REFERENCES `agencyoffices` (`agencyofficeid`);
+
+--
+-- Constraints for table `standards`
+--
+ALTER TABLE `standards`
+  ADD CONSTRAINT `standards_ibfk_1` FOREIGN KEY (`equipid`) REFERENCES `equipment` (`equipid`);
+
+--
+-- Constraints for table `tasks`
+--
+ALTER TABLE `tasks`
+  ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`standardid`) REFERENCES `standards` (`standardid`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

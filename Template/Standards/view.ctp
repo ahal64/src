@@ -32,3 +32,36 @@
         </div>
     </div>
 </div>
+
+<?= $this->Html->link(__('Add Task'), ['action' => 'clickAddTaskButton', $standard->standardid])?>
+
+<div>
+   <div class="tasks index large-10 medium-9 columns">
+    <table cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th><?= $this->Paginator->sort('name') ?></th>
+            <th><?= $this->Paginator->sort('duedate') ?></th>
+            <th><?= $this->Paginator->sort('status') ?></th>
+            <th class="actions"><?= __('Actions') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($tasks['tasks'] as $task): ?>
+        <tr>
+            <td><?= $task['name'] ?></td>
+            <td><?= $task['duedate'] ?></td>
+            <td><?= $task['status'] ?></td>
+            <td class="actions">
+                <?= $this->Html->link(__('View'), ['controller' => 'tasks','action' => 'view', $task['tasksid']]) ?>
+                <?= $this->Html->link(__('Edit'), ['controller' => 'tasks','action' => 'edit', $task['tasksid']]) ?>
+                <?= $this->Form->postLink(__('Delete'), ['controller' => 'tasks','action' => 'delete', $task['tasksid']], ['confirm' => __('Are you sure you want to delete # {0}?', $task['tasksid'])]) ?>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+    </table>
+  </div>
+</div>
+
+

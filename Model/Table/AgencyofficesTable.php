@@ -51,7 +51,7 @@ class AgencyofficesTable extends Table
             ->allowEmpty('phone')
             ->allowEmpty('fax')
             ->add('email', 'valid', ['rule' => 'email'])
-            ->notEmpty('email')
+            ->allowEmpty('email')
             ->allowEmpty('website')
             ->allowEmpty('address1')
             ->allowEmpty('address2')
@@ -72,7 +72,7 @@ class AgencyofficesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
+      //  $rules->add($rules->isUnique(['email']));
         return $rules;
     }
 }

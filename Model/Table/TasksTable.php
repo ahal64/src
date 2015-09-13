@@ -1,16 +1,16 @@
 <?php
 namespace App\Model\Table;
 
-use App\Model\Entity\Standard;
+use App\Model\Entity\Task;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Standards Model
+ * Tasks Model
  */
-class StandardsTable extends Table
+class TasksTable extends Table
 {
 
     /**
@@ -21,12 +21,11 @@ class StandardsTable extends Table
      */
     public function initialize(array $config)
     {
-        $this->table('standards');
+        $this->table('tasks');
         $this->displayField('name');
-        $this->primaryKey('standardid');
+        $this->primaryKey('tasksid');
 		
-		$this->hasOne('equipment', ['className' => 'equipment', 'foreignKey' => 'equipid']);
-		$this->hasMany('tasks', ['className' => 'tasks', 'foreignKey' => 'standardid']);
+		$this->hasOne('standard', ['className' => 'standard', 'foreignKey' => 'standardid']);
     }
 
     /**
@@ -38,18 +37,16 @@ class StandardsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
+            ->add('tasksid', 'valid', ['rule' => 'numeric'])
+            ->allowEmpty('tasksid', 'create')
             ->add('standardid', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('standardid', 'create')
+            ->requirePresence('standardid', 'create')
+            ->notEmpty('standardid')
             ->requirePresence('name', 'create')
-			->add('equipid', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('equipid', 'create')
-            ->notEmpty('equipid')
             ->notEmpty('name')
-            ->allowEmpty('description')
-            ->allowEmpty('notes')
-            ->allowEmpty('actionrequired')
-            ->allowEmpty('passorfail')
-            ->allowEmpty('extracomments');
+            ->add('duedate', 'valid', ['rule' => 'date'])
+            ->allowEmpty('duedate')
+            ->allowEmpty('status');
 
         return $validator;
     }

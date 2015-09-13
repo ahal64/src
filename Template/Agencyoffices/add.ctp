@@ -32,7 +32,6 @@
             echo $this->Form->input('postcode');
         ?>
     </fieldset>
-	
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>

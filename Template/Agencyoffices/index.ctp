@@ -36,7 +36,6 @@
                 <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $agencyoffice->agencyofficeid], ['confirm' => __('Are you sure you want to delete # {0}?', $agencyoffice->agencyofficeid)]) ?>
             </td>
         </tr>
-
     <?php endforeach; ?>
     </tbody>
     </table>

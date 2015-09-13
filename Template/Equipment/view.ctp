@@ -51,7 +51,7 @@
     </thead>
 	
 	<tbody>
-    <?php foreach ($standards as $standard): ?>
+    <?php foreach ($standards['standards'] as $standard): ?>
         <tr>
             <td><?= $standard['name'] ?></td>
             <td><?= $standard['description'] ?></td>
