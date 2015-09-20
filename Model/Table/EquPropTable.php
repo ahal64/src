@@ -24,6 +24,9 @@ class EquPropTable extends Table
         $this->table('equ_prop');
         $this->displayField('id');
         $this->primaryKey('id');
+		
+		$this->hasOne('properties',['className' => 'properties','foriegnKey' => 'propertiesid']);
+		$this->hasOne('equipment',['className' => 'equipment','foriegnKey' => 'equipid']);
     }
 
     /**

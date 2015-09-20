@@ -25,7 +25,9 @@
     </div>
 </div>
 
-<?= $this->Html->link(__('Add Standard'), ['action' => 'clickAddStandardButton', $equipment->equipid]) ?>
+<div>
+   <?= $this->Html->link(__('Add Standard'), ['action' => 'clickAddStandardButton', $equipment->equipid]) ?>
+</div>
 
 <div>
    <div class="standards index large-10 medium-9 columns">

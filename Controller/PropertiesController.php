@@ -31,10 +31,14 @@ class PropertiesController extends AppController
      */
     public function view($id = null)
     {
-        $property = $this->Properties->get($id, [
-            'contain' => []
-        ]);
+        $property = $this->Properties->get($id);
+		
+	//	$equProp = $this->Properties->get($id, [
+    //        'contain' => ['EquProp']
+    //    ]);
+		
         $this->set('property', $property);
+		//$this->set('equProp', $equProp->toArray());
         $this->set('_serialize', ['property']);
     }
 
@@ -107,4 +111,12 @@ class PropertiesController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+	
+	public function clickAddEquipmentButton($currentproperty=null)
+	{
+		$this->redirect(array(
+		      'controller' => 'equprop',
+		      'action' => 'add',
+			  $currentproperty));
+	}
 }

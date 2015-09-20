@@ -26,6 +26,8 @@ class EquipmentTable extends Table
         $this->primaryKey('equipid');
 		$this->hasOne('equipmenttype', ['className' => 'equipmenttype', 'foreignKey' => 'eqtypeid']);
         $this->hasMany('standards', ['className' => 'standards', 'foreignKey' => 'equipid']);
+		$this->hasMany('equprops',['className' => 'equprops','foriegnKey' => 'equipid']);		
+    
     }
 
     /**

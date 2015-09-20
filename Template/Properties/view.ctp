@@ -34,3 +34,7 @@
         </div>
     </div>
 </div>
+
+<div>
+   <?= $this->Html->link(__('Add an Equipment Piece'), ['action' => 'clickAddEquipmentButton', $property->propertiesid]) ?>
+</div>

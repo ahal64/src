@@ -43,8 +43,18 @@ class EquPropController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($propertyid = null)
     {
+		$properties = $this->loadModel('Properties');
+	    $propertylist = $properties->find('list')->select(['propertiesid','address1']);
+		
+		$equipment = $this->loadModel('Equipment');
+	    $equipmentlist = $equipment->find('list')->select(['equipid','name']);
+
+		//example: $patients = $this->DrugsPatients->Patients->find('list', ['keyField' => 'id','valueField' => 'person.name'])->contain(['People']);
+		//$equipmentlist = $this->EquProp->Equipment->find('list', ['keyField' => 'equipid','valueField' => 'equipment.name']);
+		//$propertylist = $this->EquProp->Properties->find('list', ['keyField' => 'propertiesid','valueField' => 'properties.address1']);
+		
         $equProp = $this->EquProp->newEntity();
         if ($this->request->is('post')) {
             $equProp = $this->EquProp->patchEntity($equProp, $this->request->data);
@@ -55,10 +65,10 @@ class EquPropController extends AppController
                 $this->Flash->error('The equ prop could not be saved. Please, try again.');
             }
         }
-        $this->set(compact('equProp'));
+        $this->set(compact('equProp','propertyid','propertylist','equipmentlist'));
         $this->set('_serialize', ['equProp']);
     }
-
+	
     /**
      * Edit method
      *

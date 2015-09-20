@@ -4,8 +4,17 @@
     <fieldset>
         <legend><?= __('Add Equ Prop') ?></legend>
         <?php
-            echo $this->Form->input('equipid');
-            echo $this->Form->input('propertiesid');
+			echo $this->Form->label('equipment: ');
+            echo $this->Form->select('equipid',$equipmentlist,['empty' => '(choose one)']);
+		    if($propertyid == null)
+			{
+			   echo $this->Form->label('property: ');
+               echo $this->Form->select('propertiesid',$propertylist,['empty' => '(choose one)']);
+			}
+			else
+			{
+				echo $this->Form->input('propertiesid',['default' => $propertyid,'readonly' => 'readonly']);
+			}
             echo $this->Form->input('duedate');
         ?>
     </fieldset>

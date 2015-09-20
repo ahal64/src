@@ -22,10 +22,11 @@ class PropertiesTable extends Table
     public function initialize(array $config)
     {
         $this->table('properties');
-        $this->displayField('propertiesid');
+        $this->displayField('address1');
         $this->primaryKey('propertiesid');
 		
-		$this->hasOne('agencyoffice', ['className' => 'agencyoffice', 'foreignKey' => 'agencyofficeid']);	
+		$this->hasOne('agencyoffice', ['className' => 'agencyoffice', 'foreignKey' => 'agencyofficeid']);
+        $this->hasMany('equprop',['className' => 'equprop','foriegnKey' => 'propertiesid']);		
     }
 
     /**
