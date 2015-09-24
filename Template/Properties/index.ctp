@@ -8,6 +8,8 @@
             <th><?= $this->Paginator->sort('propertymanager') ?></th>
             <th><?= $this->Paginator->sort('keynumber') ?></th>
             <th><?= $this->Paginator->sort('buildingclass') ?></th>
+			<th><?= $this->Paginator->sort('address1') ?></th>
+			<th><?= $this->Paginator->sort('address2') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
     </thead>
@@ -19,6 +21,8 @@
             <td><?= h($property->propertymanager) ?></td>
             <td><?= h($property->keynumber) ?></td>
             <td><?= h($property->buildingclass) ?></td>
+			<td><?= h($property->address1) ?></td>
+			<td><?= h($property->address2) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $property->propertiesid]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $property->propertiesid]) ?>

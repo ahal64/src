@@ -68,7 +68,21 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                             <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-plus"></span> Add User</a></li>
                             <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-user"></span> List Users</a></li>
     					</ul>
-						<li><a href="<?= $this->Url->build(['controller' => 'Standards', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-saved"></span> Standards</a></li>
+						<li><a href="#" data-toggle="collapse" data-target="#standards"><span class="glyphicon glyphicon-user"></span>Standards</a></li>
+    					<ul class="nav nav-pills nav-stacked collapse" id="standards">
+						   <li><a href="<?= $this->Url->build(['controller' => 'Standards', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-saved"></span> Add Standard</a></li>
+						   <li><a href="<?= $this->Url->build(['controller' => 'Standards', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-saved"></span>List Standards</a></li>
+					    </ul>
+						<li><a href="#" data-toggle="collapse" data-target="#tasks"><span class="glyphicon glyphicon-user"></span>Tasks</a></li>
+    					<ul class="nav nav-pills nav-stacked collapse" id="tasks">
+						   <li><a href="<?= $this->Url->build(['controller' => 'Tasks', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-saved"></span> Add Task</a></li>
+						   <li><a href="<?= $this->Url->build(['controller' => 'Tasks', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-saved"></span>List Tasks</a></li>
+					    </ul>
+						<li><a href="#" data-toggle="collapse" data-target="#jobs"><span class="glyphicon glyphicon-user"></span>Jobs</a></li>
+    					<ul class="nav nav-pills nav-stacked collapse" id="jobs">
+						   <li><a href="<?= $this->Url->build(['controller' => 'Jobs', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-saved"></span> Add Jobs</a></li>
+						   <li><a href="<?= $this->Url->build(['controller' => 'Jobs', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-saved"></span>List Jobs</a></li>
+					    </ul>
 					</ul>
 					<ul class="nav nav-pills nav-stacked">
 						<li class="active"><a href="#"><span class="glyphicon glyphicon-off"></span>  Property Management</a></li>
