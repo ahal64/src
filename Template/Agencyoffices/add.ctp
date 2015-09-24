@@ -1,9 +1,4 @@
-<div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('List Agencyoffices'), ['action' => 'index']) ?></li>
-    </ul>
-</div>
+
 <div class="agencyoffices form large-10 medium-9 columns">
     <?= $this->Form->create($agencyoffice); ?>
     <fieldset>
