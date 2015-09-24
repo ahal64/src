@@ -54,6 +54,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </div>
 
     <div id="content">
+		<?= $this->Flash->render() ?>
         <div class="row">
 			<div class="col-sm-3 sidebarStyle">
 				<div class="text-xs-center text-sm-left">
@@ -103,6 +104,24 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     					<ul class="nav nav-pills nav-stacked collapse" id="agency_staff">
     						<li><a href="<?= $this->Url->build(['controller' => 'Agencystaffs', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-plus"></span> Add Agency Staff</a></li>
     						<li><a href="<?= $this->Url->build(['controller' => 'Agencystaffs', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-user"></span> List Agency Staff</a></li>
+    					</ul>
+					</ul>
+					<ul class="nav nav-pills nav-stacked">
+						<li class="active"><a href="#"><span class="glyphicon glyphicon-off"></span>  Item Management</a></li>
+						<li><a href="#" data-toggle="collapse" data-target="#Equipment_types"><span class="glyphicon glyphicon-folder-open"></span> Equipment Types</a></li>
+    					<ul class="nav nav-pills nav-stacked collapse" id="Equipment_types">
+    						<li><a href="<?= $this->Url->build(['controller' => 'Equipmenttypes', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-plus"></span> Add Equipment Types</a></li>
+    						<li><a href="<?= $this->Url->build(['controller' => 'Equipmenttypes', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-folder-open"></span> List Equipment Types</a></li>
+    					</ul>
+						<li><a href="#" data-toggle="collapse" data-target="#Equipment"><span class="glyphicon glyphicon-phone-alt"></span> Equipment</a></li>
+    					<ul class="nav nav-pills nav-stacked collapse" id="Equipment">
+    						<li><a href="<?= $this->Url->build(['controller' => 'Equipment', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-plus"></span> Add Equipment</a></li>
+    						<li><a href="<?= $this->Url->build(['controller' => 'Equipment', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-phone-alt"></span> List Equipment</a></li>
+    					</ul>
+						<li><a href="#" data-toggle="collapse" data-target="#equprop"><span class="glyphicon glyphicon-user"></span> Item List</a></li>
+    					<ul class="nav nav-pills nav-stacked collapse" id="equprop">
+    						<li><a href="<?= $this->Url->build(['controller' => 'equprop', 'action' => 'add']) ?>"><span class="glyphicon glyphicon-plus"></span> Add Item List</a></li>
+    						<li><a href="<?= $this->Url->build(['controller' => 'equprop', 'action' => 'index']) ?>"><span class="glyphicon glyphicon-user"></span> List Item List</a></li>
     					</ul>
 					</ul>
 				</div>
