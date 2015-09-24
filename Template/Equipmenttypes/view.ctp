@@ -1,4 +1,12 @@
-
+<div class="actions columns large-2 medium-3">
+    <h3><?= __('Actions') ?></h3>
+    <ul class="side-nav">
+        <li><?= $this->Html->link(__('Edit Equipmenttype'), ['action' => 'edit', $equipmenttype->eqtypeid]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Equipmenttype'), ['action' => 'delete', $equipmenttype->eqtypeid], ['confirm' => __('Are you sure you want to delete # {0}?', $equipmenttype->eqtypeid)]) ?> </li>
+        <li><?= $this->Html->link(__('List Equipmenttypes'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Equipmenttype'), ['action' => 'add']) ?> </li>
+    </ul>
+</div>
 <div class="equipmenttypes view large-10 medium-9 columns">
     <h2><?= h($equipmenttype->name) ?></h2>
     <div class="row">

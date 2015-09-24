@@ -1,4 +1,12 @@
-
+<div class="actions columns large-2 medium-3">
+    <h3><?= __('Actions') ?></h3>
+    <ul class="side-nav">
+        <li><?= $this->Html->link(__('Edit Occupant'), ['action' => 'edit', $occupant->occid]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Occupant'), ['action' => 'delete', $occupant->occid], ['confirm' => __('Are you sure you want to delete # {0}?', $occupant->occid)]) ?> </li>
+        <li><?= $this->Html->link(__('List Occupants'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Occupant'), ['action' => 'add']) ?> </li>
+    </ul>
+</div>
 <div class="occupants view large-10 medium-9 columns">
     <h2><?= h($occupant->occid) ?></h2>
     <div class="row">

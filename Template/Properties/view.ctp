@@ -1,4 +1,12 @@
-
+<div class="actions columns large-2 medium-3">
+    <h3><?= __('Actions') ?></h3>
+    <ul class="side-nav">
+        <li><?= $this->Html->link(__('Edit Property'), ['action' => 'edit', $property->propertiesid]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Property'), ['action' => 'delete', $property->propertiesid], ['confirm' => __('Are you sure you want to delete # {0}?', $property->propertiesid)]) ?> </li>
+        <li><?= $this->Html->link(__('List Properties'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Property'), ['action' => 'add']) ?> </li>
+    </ul>
+</div>
 <div class="properties view large-10 medium-9 columns">
     <h2><?= h($property->propertiesid) ?></h2>
     <div class="row">
