@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2015 at 05:30 AM
+-- Generation Time: Sep 25, 2015 at 10:02 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -65,15 +65,14 @@ CREATE TABLE IF NOT EXISTS `agencyoffices` (
   `agencygroupid` int(11) DEFAULT NULL,
   PRIMARY KEY (`agencyofficeid`),
   KEY `agencygroupkey` (`agencygroupid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `agencyoffices`
 --
 
 INSERT INTO `agencyoffices` (`agencyofficeid`, `agencyname`, `customercode`, `abn`, `phone`, `fax`, `email`, `website`, `address1`, `address2`, `suburb`, `postcode`, `agencygroupid`) VALUES
-(2, 'clayton office', '4234243', '434234', '97950000', '979511111', 'test11111@test.com', '', '', '', '', '', 4),
-(3, '111', '111', '111', '', '', 'test@test.com', '', '', '', '', '', 3);
+(2, 'clayton office', '4234243', '434234', '97950000', '979511111', 'test11111@test.com', '', '', '', '', '', 4);
 
 -- --------------------------------------------------------
 
@@ -100,14 +99,14 @@ CREATE TABLE IF NOT EXISTS `agencystaffs` (
 CREATE TABLE IF NOT EXISTS `equipment` (
   `equipid` int(11) NOT NULL AUTO_INCREMENT,
   `eqtypeid` int(11) NOT NULL,
-  `name` varchar(120) NOT NULL,
-  `notes` varchar(120) DEFAULT NULL,
+  `name` varchar(120) CHARACTER SET latin1 NOT NULL,
+  `notes` varchar(120) CHARACTER SET latin1 DEFAULT NULL,
   `installationdate` date DEFAULT NULL,
-  `existing_or_required` varchar(20) DEFAULT NULL,
-  `barcode` varchar(30) DEFAULT NULL,
+  `existing_or_required` varchar(20) CHARACTER SET latin1 DEFAULT NULL,
+  `barcode` varchar(30) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`equipid`),
   KEY `eqtypeid` (`eqtypeid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `equipment`
@@ -124,10 +123,10 @@ INSERT INTO `equipment` (`equipid`, `eqtypeid`, `name`, `notes`, `installationda
 
 CREATE TABLE IF NOT EXISTS `equipmenttypes` (
   `eqtypeid` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(120) NOT NULL,
-  `description` varchar(120) DEFAULT NULL,
+  `name` varchar(120) CHARACTER SET latin1 NOT NULL,
+  `description` varchar(120) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`eqtypeid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `equipmenttypes`
@@ -150,7 +149,45 @@ CREATE TABLE IF NOT EXISTS `equ_prop` (
   PRIMARY KEY (`id`),
   KEY `equipid` (`equipid`,`propertiesid`),
   KEY `propertiesid` (`propertiesid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `equ_prop`
+--
+
+INSERT INTO `equ_prop` (`id`, `equipid`, `propertiesid`, `duedate`) VALUES
+(1, 1, 1, '2015-09-20'),
+(2, 1, 1, '2015-09-20'),
+(3, 1, 1, '2015-09-18'),
+(4, 1, 1, '2015-09-24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE IF NOT EXISTS `jobs` (
+  `jobid` int(11) NOT NULL AUTO_INCREMENT,
+  `propertiesid` int(11) NOT NULL,
+  `equipid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `jobdesc` varchar(120) CHARACTER SET latin1 NOT NULL,
+  `startdate` date NOT NULL,
+  `enddate` date NOT NULL,
+  PRIMARY KEY (`jobid`),
+  KEY `equipid` (`equipid`),
+  KEY `userid` (`userid`),
+  KEY `propertiesid` (`propertiesid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`jobid`, `propertiesid`, `equipid`, `userid`, `jobdesc`, `startdate`, `enddate`) VALUES
+(1, 1, 1, 9, 'gfgfggf', '2015-09-24', '2015-09-24'),
+(2, 1, 1, 3, 'fdsfd', '2015-09-24', '2015-09-24');
 
 -- --------------------------------------------------------
 
@@ -210,7 +247,15 @@ CREATE TABLE IF NOT EXISTS `properties` (
   `propertystatus` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`propertiesid`),
   KEY `agencyofficeid` (`agencyofficeid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `properties`
+--
+
+INSERT INTO `properties` (`propertiesid`, `agencyofficeid`, `propertymanager`, `keynumber`, `buildingclass`, `occupancypermit`, `address1`, `address2`, `notes`, `duedate`, `propertystatus`) VALUES
+(1, 2, '', '', '', '', '5/7 test street', '', '', '2015-09-20', ''),
+(2, 2, 'aaa', '123', '', '', '5/6 Crescent Street', '', '', '2015-09-24', '');
 
 -- --------------------------------------------------------
 
@@ -248,12 +293,12 @@ INSERT INTO `standards` (`standardid`, `equipid`, `name`, `description`, `notes`
 CREATE TABLE IF NOT EXISTS `tasks` (
   `tasksid` int(11) NOT NULL AUTO_INCREMENT,
   `standardid` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `name` varchar(30) CHARACTER SET latin1 NOT NULL,
   `duedate` date DEFAULT NULL,
-  `status` varchar(30) DEFAULT NULL,
+  `status` varchar(30) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`tasksid`),
   KEY `standardid` (`standardid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `tasks`
@@ -285,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `role`) VALUES
 (3, 'jason', '$2y$10$yPJEHMyslJ9mh6pw3yA3b.damnNmUXweRCUq7N4bl0ki7z0NFguCq', 'aaa', 'aaa', 'ADMIN'),
-(9, 'david', '$2y$10$obsdm7oXB.yIXXD.uNi15.9FNRsEhSdT12LDeLYsAVN4nXBYWqNfy', 'david', 'grant', 'ADMIN'),
+(9, 'david', '$2y$10$8Eeo8YNQcsNFfZ0ghudKyubmszX6dWXLfhnRrN8MxXzy3HemgxZlO', 'david', 'grant', 'ADMIN'),
 (10, 'brendon', '$2y$10$t9jBmc9P1RtDjQKtVcahz.noBVmehfgmw1SqcwOKv.rlhoKigl60i', 'brendon', 'taylor', 'ADMIN');
 
 --
@@ -316,6 +361,14 @@ ALTER TABLE `equipment`
 ALTER TABLE `equ_prop`
   ADD CONSTRAINT `equ_prop_ibfk_1` FOREIGN KEY (`equipid`) REFERENCES `equipment` (`equipid`),
   ADD CONSTRAINT `equ_prop_ibfk_2` FOREIGN KEY (`propertiesid`) REFERENCES `properties` (`propertiesid`);
+
+--
+-- Constraints for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD CONSTRAINT `jobs_ibfk_1` FOREIGN KEY (`propertiesid`) REFERENCES `properties` (`propertiesid`),
+  ADD CONSTRAINT `jobs_ibfk_2` FOREIGN KEY (`equipid`) REFERENCES `equipment` (`equipid`),
+  ADD CONSTRAINT `jobs_ibfk_3` FOREIGN KEY (`userid`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `properties`
