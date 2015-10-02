@@ -10,6 +10,7 @@
             <th><?= $this->Paginator->sort('jobdesc') ?></th>
             <th><?= $this->Paginator->sort('startdate') ?></th>
             <th><?= $this->Paginator->sort('enddate') ?></th>
+			<th><?= $this->Paginator->sort('status') ?></th>
             <th class="actions"><?= __('Actions') ?></th>
         </tr>
     </thead>
@@ -23,6 +24,7 @@
             <td><?= h($job->jobdesc) ?></td>
             <td><?= h($job->startdate) ?></td>
             <td><?= h($job->enddate) ?></td>
+			 <td><?=h($job->status) ?></td>
             <td class="actions">
                 <?= $this->Html->link(__('View'), ['action' => 'view', $job->jobid]) ?>
                 <?= $this->Html->link(__('Edit'), ['action' => 'edit', $job->jobid]) ?>

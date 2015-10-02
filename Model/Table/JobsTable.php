@@ -25,7 +25,7 @@ class JobsTable extends Table
         $this->displayField('jobdesc');
         $this->primaryKey('jobid');
 		
-		$this->hasOne('properties', ['className' => 'properties', 'foreignKey' => 'propertiesid']);
+		//$this->hasOne('property', ['className' => 'property', 'foreignKey' => 'propertiesid']);
 		$this->hasOne('equipment', ['className' => 'equipment', 'foreignKey' => 'equipid']);
 		$this->hasOne('users', ['className' => 'users', 'foreignKey' => 'id']);
     }
@@ -57,7 +57,8 @@ class JobsTable extends Table
             ->notEmpty('startdate')
             ->add('enddate', 'valid', ['rule' => 'date'])
             ->requirePresence('enddate', 'create')
-            ->notEmpty('enddate');
+            ->notEmpty('enddate')
+			->allowEmpty('status');
 
         return $validator;
     }

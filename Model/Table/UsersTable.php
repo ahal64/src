@@ -24,6 +24,8 @@ class UsersTable extends Table
         $this->table('users');
         $this->displayField('username');
         $this->primaryKey('id');
+		
+		 $this->hasMany('jobs',['className' => 'jobs','foriegnKey' => 'id']);	
     }
 
     /**

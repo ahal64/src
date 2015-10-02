@@ -21,5 +21,6 @@ class Job extends Entity
         'jobdesc' => true,
         'startdate' => true,
         'enddate' => true,
+		'status' => true,
     ];
 }

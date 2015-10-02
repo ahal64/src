@@ -16,6 +16,7 @@
             echo $this->Form->input('jobdesc');
             echo $this->Form->input('startdate');
             echo $this->Form->input('enddate');
+			echo $this->Form->input('status');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

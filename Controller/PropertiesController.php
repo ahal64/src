@@ -36,9 +36,14 @@ class PropertiesController extends AppController
 	//	$equProp = $this->Properties->get($id, [
     //        'contain' => ['EquProp']
     //    ]);
+	
+	   // $jobs = $this->Properties->get($id, [
+	   //				'contain' => ['Jobs']
+	   //			]);
 		
         $this->set('property', $property);
 		//$this->set('equProp', $equProp->toArray());
+		//$this->set('jobs', $jobs->toArray());
         $this->set('_serialize', ['property']);
     }
 

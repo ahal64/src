@@ -38,3 +38,41 @@
 <div>
    <?= $this->Html->link(__('Add an Equipment Piece'), ['action' => 'clickAddEquipmentButton', $property->propertiesid]) ?>
 </div>
+
+<!--
+<div class="jobs index large-10 medium-9 columns">
+    <table cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th><?= $this->Paginator->sort('jobid') ?></th>
+            <th><?= $this->Paginator->sort('equipid') ?></th>
+            <th><?= $this->Paginator->sort('userid') ?></th>
+            <th><?= $this->Paginator->sort('jobdesc') ?></th>
+            <th><?= $this->Paginator->sort('startdate') ?></th>
+            <th><?= $this->Paginator->sort('enddate') ?></th>
+			<th><?= $this->Paginator->sort('status') ?></th>
+            <th class="actions"><?= __('Actions') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($jobs['jobs'] as $job): ?>
+        <tr>
+            <td><?= $this->Number->format($job['jobid']) ?></td>  
+            <td><?= $this->Number->format($job['equipid']) ?></td>
+            <td><?= $this->Number->format($job['userid']) ?></td>
+            <td><?= $job['jobdesc'] ?></td>
+            <td><?= $job['startdate'] ?></td>
+            <td><?= $job['enddate'] ?></td>
+			 <td><?=$job['status'] ?></td>
+            <td class="actions">
+                <?= $this->Html->link(__('View'), ['action' => 'view', $job['jobid']]) ?>
+                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $job['jobid']]) ?>
+                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $job['jobid']], ['confirm' => __('Are you sure you want to delete # {0}?', $job['jobid'])]) ?>
+            </td>
+        </tr>
+
+    <?php endforeach; ?>
+    </tbody>
+    </table>
+</div>
+-->

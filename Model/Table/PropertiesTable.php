@@ -26,7 +26,8 @@ class PropertiesTable extends Table
         $this->primaryKey('propertiesid');
 		
 		$this->hasOne('agencyoffice', ['className' => 'agencyoffice', 'foreignKey' => 'agencyofficeid']);
-        $this->hasMany('equprop',['className' => 'equprop','foriegnKey' => 'propertiesid']);		
+        $this->hasMany('equprop',['className' => 'equprop','foriegnKey' => 'propertiesid']);
+        $this->hasMany('jobs',['className' => 'jobs','foriegnKey' => 'propertiesid']);		
     }
 
     /**
