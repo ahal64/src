@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2015 at 10:02 AM
+-- Generation Time: Oct 14, 2015 at 01:00 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -32,17 +32,6 @@ CREATE TABLE IF NOT EXISTS `agencygroups` (
   PRIMARY KEY (`agencygroupid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
---
--- Dumping data for table `agencygroups`
---
-
-INSERT INTO `agencygroups` (`agencygroupid`, `groupname`) VALUES
-(2, 'Frank Facey'),
-(3, 'Barry Plant'),
-(4, 'LJ Hooker'),
-(5, 'Hocking Stuart'),
-(6, 'Ray White');
-
 -- --------------------------------------------------------
 
 --
@@ -66,13 +55,6 @@ CREATE TABLE IF NOT EXISTS `agencyoffices` (
   PRIMARY KEY (`agencyofficeid`),
   KEY `agencygroupkey` (`agencygroupid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `agencyoffices`
---
-
-INSERT INTO `agencyoffices` (`agencyofficeid`, `agencyname`, `customercode`, `abn`, `phone`, `fax`, `email`, `website`, `address1`, `address2`, `suburb`, `postcode`, `agencygroupid`) VALUES
-(2, 'clayton office', '4234243', '434234', '97950000', '979511111', 'test11111@test.com', '', '', '', '', '', 4);
 
 -- --------------------------------------------------------
 
@@ -108,13 +90,6 @@ CREATE TABLE IF NOT EXISTS `equipment` (
   KEY `eqtypeid` (`eqtypeid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
---
--- Dumping data for table `equipment`
---
-
-INSERT INTO `equipment` (`equipid`, `eqtypeid`, `name`, `notes`, `installationdate`, `existing_or_required`, `barcode`) VALUES
-(1, 1, '8 months fire extinguisher', '', '2015-09-13', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -127,13 +102,6 @@ CREATE TABLE IF NOT EXISTS `equipmenttypes` (
   `description` varchar(120) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`eqtypeid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `equipmenttypes`
---
-
-INSERT INTO `equipmenttypes` (`eqtypeid`, `name`, `description`) VALUES
-(1, 'fire extinguisher', 'extinguishes fire');
 
 -- --------------------------------------------------------
 
@@ -151,16 +119,6 @@ CREATE TABLE IF NOT EXISTS `equ_prop` (
   KEY `propertiesid` (`propertiesid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
---
--- Dumping data for table `equ_prop`
---
-
-INSERT INTO `equ_prop` (`id`, `equipid`, `propertiesid`, `duedate`) VALUES
-(1, 1, 1, '2015-09-20'),
-(2, 1, 1, '2015-09-20'),
-(3, 1, 1, '2015-09-18'),
-(4, 1, 1, '2015-09-24');
-
 -- --------------------------------------------------------
 
 --
@@ -175,19 +133,12 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   `jobdesc` varchar(120) CHARACTER SET latin1 NOT NULL,
   `startdate` date NOT NULL,
   `enddate` date NOT NULL,
+  `status` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`jobid`),
   KEY `equipid` (`equipid`),
   KEY `userid` (`userid`),
   KEY `propertiesid` (`propertiesid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `jobs`
---
-
-INSERT INTO `jobs` (`jobid`, `propertiesid`, `equipid`, `userid`, `jobdesc`, `startdate`, `enddate`) VALUES
-(1, 1, 1, 9, 'gfgfggf', '2015-09-24', '2015-09-24'),
-(2, 1, 1, 3, 'fdsfd', '2015-09-24', '2015-09-24');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -249,14 +200,6 @@ CREATE TABLE IF NOT EXISTS `properties` (
   KEY `agencyofficeid` (`agencyofficeid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
---
--- Dumping data for table `properties`
---
-
-INSERT INTO `properties` (`propertiesid`, `agencyofficeid`, `propertymanager`, `keynumber`, `buildingclass`, `occupancypermit`, `address1`, `address2`, `notes`, `duedate`, `propertystatus`) VALUES
-(1, 2, '', '', '', '', '5/7 test street', '', '', '2015-09-20', ''),
-(2, 2, 'aaa', '123', '', '', '5/6 Crescent Street', '', '', '2015-09-24', '');
-
 -- --------------------------------------------------------
 
 --
@@ -276,14 +219,6 @@ CREATE TABLE IF NOT EXISTS `standards` (
   KEY `equipid` (`equipid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
---
--- Dumping data for table `standards`
---
-
-INSERT INTO `standards` (`standardid`, `equipid`, `name`, `description`, `notes`, `actionrequired`, `passorfail`, `extracomments`) VALUES
-(1, 1, 'AC 10110', '', '', '', '', ''),
-(2, 1, 'ac 5454545', '', '', '', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -299,14 +234,6 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   PRIMARY KEY (`tasksid`),
   KEY `standardid` (`standardid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
-
---
--- Dumping data for table `tasks`
---
-
-INSERT INTO `tasks` (`tasksid`, `standardid`, `name`, `duedate`, `status`) VALUES
-(1, 1, 'check nozzile', '2015-09-13', ''),
-(3, 1, 'check pressure gauge', '2015-09-13', '');
 
 -- --------------------------------------------------------
 
